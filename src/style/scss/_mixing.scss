@@ -27,16 +27,13 @@
     font-family: font.$press-start-2p;
     color: color.$form-content;
     font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 160%;
 }
 
 @mixin form-content{
     color: color.$form-content;
     text-align: center;
     font-family: font.$press-start-2p;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 35px; 
@@ -44,8 +41,8 @@
 
 @mixin form-button{
     display: flex;
-    max-width: 463px;
-    min-height: 70px;
+    max-width: 440px;
+    min-height: 60px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -68,4 +65,15 @@
         transform: scale(0.98);
         color:white;
     }
+}
+
+@mixin heading{
+    color: color.$logo;
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: #000;
+    font-family: font.$micro-5;
+    font-size: 99px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Bird from '../../assets/form/flapping.png';
+import Chest from '../../assets/form/chest.png';
 import '../../style/register/register.css'
 
 const Register = ({ setIsAuthenticated }) => {
@@ -35,6 +37,15 @@ const Register = ({ setIsAuthenticated }) => {
 
   return (
     <div className="form-wrapper">
+       <section className="heading">
+        <h1 className="heading-text">
+          Virtual Pet
+        </h1>
+      </section>
+      <section className="bird-chest">
+        <img className="bird"src={Bird} alt="Bird flapping" />
+        <img className="chest"src={Chest} alt="Chest" />
+      </section>
       <form onSubmit={handleRegister} className="register-form">
         <section className="input-container">
           <section className="form-content">
@@ -87,7 +98,6 @@ const Register = ({ setIsAuthenticated }) => {
           <button className="sign-up" type="submit">Sign Up</button>
         </section>
       </form>
-      <div className="back-form"></div>
     </div>
   );
 };

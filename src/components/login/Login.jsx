@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Bird from '../../assets/form/flapping.png';
+import Chest from '../../assets/form/chest.png';
 import '../../style/login/login.css'
 
 const Login = ({ setIsAuthenticated }) => {
@@ -29,15 +31,26 @@ const Login = ({ setIsAuthenticated }) => {
   
   return (
     <div className="form-wrapper">
+      <section className="heading">
+        <h1 className="heading-text">
+          Virtual Pet
+        </h1>
+      </section>
+      <section className="bird-chest">
+        <img className="bird"src={Bird} alt="Bird flapping" />
+        <img className="chest"src={Chest} alt="Chest" />
+      </section>
       <form onSubmit={handleLogin} className="login-form">
         <section className="input-container">
-        <section className="form-content">
-            <h2 className="text">Welcome to Virtual Pet,
-              log in to enter our world!
-            </h2>
+          <section className="form-content">
+              <h2 className="text">
+                Welcome to Virtual Pet,
+                log in to enter our world!
+              </h2>
           </section>
           <label>Username:</label>
           <input
+            className="username"
             type="text"
             name="username"
             value={username}
@@ -68,7 +81,6 @@ const Login = ({ setIsAuthenticated }) => {
           </p>
         </section>
       </form>
-      <div className="back-form"></div>
     </div>
   );
 };

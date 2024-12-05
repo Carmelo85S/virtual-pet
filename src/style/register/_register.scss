@@ -6,36 +6,61 @@
     @include container;
     @include flexbox(center, center, column);
 
+    .heading{
+        @include container(385px, 20px);
+        margin:0;
+        padding: 0;
+        
+        &-text{
+            @include heading;
+            text-align: center;
+            text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px 1px 0 black,
+            1px 1px 0 black;
+        }
+    }
+
+    .bird-chest{
+        @include container (420px, 50px);
+        @include flexbox(space-between);
+        margin-bottom: 10px;
+
+        .chest{
+            width: 50px;
+        }
+    }
+
     .register-form {
         @include flexbox(center, center, column);
-        @include container(500px, 570px);
+        @include container(430px, 500px);
         background-color: color.$form-bg;
-        border: 1px solid #000;
+        box-shadow: -20px 20px 0 #c96523;
         z-index: 10;
 
         .input-container{
-            @include container(435px, 345px);
+            @include container(420px, 320px);
             @include flexbox(space-between, center, column);
 
             .form-content {
-                @include container(368px, 40px);
+                @include container(378px, 70px);
                 @include form-content;
-                margin-bottom: 10px;
                 text-align: center;
+                margin-top: 20px;
             }
 
-            label{
-              @include label;  
-              margin-bottom: 10px;
+            label {
+                @include label;
+                margin-bottom: 10px;
             }
 
             input{
-                @include container(400px, 36px);
+                @include container(360px, 36px);
                 font-family: font.$poppins;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 160%;
                 margin-bottom:15px;
                 padding-left: 10px;
                 border: 1px solid #000;
@@ -44,9 +69,6 @@
             .checkbox-container {
                 display: flex;
                 align-items: center;
-                gap: 10px;
-                padding: 10px;
-              
               
                 .checkbox {
                     width: 20px;
@@ -66,22 +88,12 @@
         }
 
         .sign-up-container{
-            @include container(413px, 70px);
+            @include container(373px, 50px);
+            border:1px solid black;
 
             .sign-up{
                 @include form-button;
             }
         }
-    }
-
-    .back-form{
-        @include flexbox(center, center,);
-        @include container(500px, 570px);
-        background-color: #ECA474;
-        border: 1px solid black;
-        position: absolute;
-        top:130px;
-        left: 430px;
-        z-index: 2;
     }
 }
