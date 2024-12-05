@@ -5,3 +5,10 @@
   padding: 0;
   margin: 0;
 }
+
+body{
+  background-image: url('./assets/virtual-pet-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

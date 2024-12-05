@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './assets/page/Home';
+import Home from './page/Home';
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Play from "./assets/page/Play";
+import Play from './page/Play';
+import './app.css';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -20,8 +21,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Home/>}
-        />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />
         <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />}
