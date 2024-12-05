@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../style/register/register.css'
 
 const Register = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState('');
@@ -34,8 +35,11 @@ const Register = ({ setIsAuthenticated }) => {
 
   return (
     <div className="form-wrapper">
-      <form onSubmit={handleRegister} className="login-form">
+      <form onSubmit={handleRegister} className="register-form">
         <section className="input-container">
+          <section className="form-content">
+            <h2 className="text">Register</h2>
+          </section>
           <label>Username:</label>
           <input
             type="text"
@@ -51,7 +55,7 @@ const Register = ({ setIsAuthenticated }) => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            placeholder="example@example.com"
             required
           />
           <label>Password:</label>
@@ -60,7 +64,7 @@ const Register = ({ setIsAuthenticated }) => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder="*******"
             required
           />
           <label>Confirm Password:</label>
@@ -69,14 +73,21 @@ const Register = ({ setIsAuthenticated }) => {
             name="confirm-password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Confirm password"
+            placeholder="*******"
             required
           />
+          <section className="checkbox-container">
+            <input type="checkbox" id="agreement" className="checkbox" />
+            <label for="agreement" className="checkbox-text">
+              I agree to the Terms of Service and Privacy Policy
+            </label>
+          </section>
         </section>
-        <section className="btn-container">
-          <button type="submit">Register</button>
+        <section className="sign-up-container">
+          <button className="sign-up" type="submit">Sign Up</button>
         </section>
       </form>
+      <div className="back-form"></div>
     </div>
   );
 };

@@ -1,0 +1,87 @@
+@use '../scss/font';
+@use '../scss/color';
+@import '../scss/mixing';
+
+.form-wrapper {
+    @include container;
+    @include flexbox(center, center, column);
+
+    .register-form {
+        @include flexbox(center, center, column);
+        @include container(500px, 570px);
+        background-color: color.$form-bg;
+        border: 1px solid #000;
+        z-index: 10;
+
+        .input-container{
+            @include container(435px, 345px);
+            @include flexbox(space-between, center, column);
+
+            .form-content {
+                @include container(368px, 40px);
+                @include form-content;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            label{
+              @include label;  
+              margin-bottom: 10px;
+            }
+
+            input{
+                @include container(400px, 36px);
+                font-family: font.$poppins;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 160%;
+                margin-bottom:15px;
+                padding-left: 10px;
+                border: 1px solid #000;
+            }
+
+            .checkbox-container {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px;
+              
+              
+                .checkbox {
+                    width: 20px;
+                    height: 20px;
+                    margin: 0;
+                }
+                
+                .checkbox-text {
+                    font-family: font.$poppins;
+                    font-size: 14px;
+                    color: #333;
+                    margin: 0;
+                    line-height: 1.2;
+                }
+            }
+              
+        }
+
+        .sign-up-container{
+            @include container(413px, 70px);
+
+            .sign-up{
+                @include form-button;
+            }
+        }
+    }
+
+    .back-form{
+        @include flexbox(center, center,);
+        @include container(500px, 570px);
+        background-color: #ECA474;
+        border: 1px solid black;
+        position: absolute;
+        top:130px;
+        left: 430px;
+        z-index: 2;
+    }
+}
