@@ -52,7 +52,7 @@ const Register = ({ setIsAuthenticated }) => {
           <section className="form-content">
             <h2 className="text">Register</h2>
           </section>
-          <label>Username:</label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             name="username"
@@ -61,7 +61,7 @@ const Register = ({ setIsAuthenticated }) => {
             placeholder="Username"
             required
           />
-          <label>Email:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             name="email"
@@ -70,7 +70,7 @@ const Register = ({ setIsAuthenticated }) => {
             placeholder="example@example.com"
             required
           />
-          <label>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
             name="password"
@@ -79,7 +79,7 @@ const Register = ({ setIsAuthenticated }) => {
             placeholder="*******"
             required
           />
-          <label>Confirm Password:</label>
+          <label htmlFor="confirm-password">Confirm Password:</label>
           <input
             type="password"
             name="confirm-password"
@@ -90,7 +90,7 @@ const Register = ({ setIsAuthenticated }) => {
           />
           <section className="checkbox-container">
             <input type="checkbox" id="agreement" className="checkbox" />
-            <label for="agreement" className="checkbox-text">
+            <label htmlFor="agreement" className="checkbox-text">
               I agree to the Terms of Service and Privacy Policy
             </label>
           </section>
