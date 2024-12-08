@@ -69,7 +69,7 @@ const Login = ({ setIsAuthenticated }) => {
           />
         </section>
         <section className="sign-in-container">
-          <button className="sign-in" type="submit">Sign Up</button>
+          <button className="sign-in" type="submit">Sign In</button>
         </section>
         <section className="question-terms-container">
           <p className="question">

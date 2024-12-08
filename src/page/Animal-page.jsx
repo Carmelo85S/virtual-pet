@@ -1,4 +1,4 @@
-const Play = () => {
+const AnimalPage = () => {
   return (
     <div>
         <h1>PLAY</h1>
@@ -6,4 +6,4 @@ const Play = () => {
   )
 }
 
-export default Play
+export default AnimalPage

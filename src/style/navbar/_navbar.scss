@@ -1,0 +1,13 @@
+@use '../scss/color';
+@use '../scss/font';
+@import '../scss/mixing';
+
+header{
+    @include container($min-heigth: 40px);
+
+    nav{
+        @include container(900px, 70px);
+        margin: auto;
+        @include flexbox(space-between, center)
+    }
+}
