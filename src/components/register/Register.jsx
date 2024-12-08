@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Bird from '../../assets/form/flapping.png';
 import Chest from '../../assets/form/chest.png';
@@ -96,6 +97,12 @@ const Register = ({ setIsAuthenticated }) => {
         </section>
         <section className="sign-up-container">
           <button className="sign-up" type="submit">Sign Up</button>
+        </section>
+        <section className="question-terms-container">
+          <p className="question">
+            Do you have an account? 
+            <Link to="/login"> Sign in</Link>
+          </p>
         </section>
       </form>
     </div>

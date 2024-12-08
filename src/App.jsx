@@ -21,6 +21,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />
         <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />}
