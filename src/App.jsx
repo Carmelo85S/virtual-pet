@@ -9,15 +9,14 @@ import Navbar from './components/navbar/Navbar';
 import './app.css';
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // Check localStorage to determine if the user is authenticated
-    const userData = JSON.parse(localStorage.getItem('user'));
-    if (userData && userData.expirationTime > new Date().getTime()) {
-      setIsAuthenticated(true);
-    }
-  }, []);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+    useEffect(() => {
+      const userData = JSON.parse(localStorage.getItem('user'));
+      if (userData && userData.expirationTime > new Date().getTime()) {
+        setIsAuthenticated(true);
+      }
+    }, []);
 
   return (
     <BrowserRouter>
@@ -29,7 +28,7 @@ const App = () => {
         />
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
-            <Navbar />
+            <Navbar setIsAuthenticated={setIsAuthenticated}/>
             <AnimalPage />
           </PrivateRoute>
         }/>
