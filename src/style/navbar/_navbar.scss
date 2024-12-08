@@ -3,11 +3,55 @@
 @import '../scss/mixing';
 
 header{
-    @include container($min-heigth: 40px);
+    @include container($min-height: 40px);
 
     nav{
-        @include container(900px, 70px);
+        @include container(1400px, 70px);
         margin: auto;
-        @include flexbox(space-between, center)
+        @include flexbox(space-between, center, row);
+
+        .logo-container{
+            @include container(400px, 70px);
+            
+            .logo{
+                @include logo;
+            }
+        }
+
+        .nav-btn{
+            @include container(400px, 70px);
+            @include flexbox(space-between, center); 
+
+            .btn{
+                @include nav-button;
+            }
+
+            .logout{
+                background-color: color.$log-out;
+
+                &:hover{
+                background-color: color.$log-out-hover;
+                color:#d3d0d0;
+                }
+
+                &:active{
+                    background-color: color.$log-out-active;
+                    color:#d3d0d0;
+                    transform: scale(0.95);
+                }
+            }
+
+            .play{
+                &:hover{
+                background-color: color.$play-hover;
+                }
+
+                &:active{
+                    background-color: color.$play-active;
+                    color:#d3d0d0;
+                    transform: scale(0.95);
+                }
+            }
+        }
     }
 }

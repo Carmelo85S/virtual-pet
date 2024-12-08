@@ -95,6 +95,20 @@
     }
 }
 
+@mixin nav-button{
+    display: flex;
+    max-width: 180px;
+    min-height: 50px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    font-family: font.$micro-5;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid black;
+}
 
 @mixin logo{
     color: color.$logo;
