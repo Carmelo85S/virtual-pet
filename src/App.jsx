@@ -5,6 +5,7 @@ import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Play from './page/Play';
+import FoodStore from './page/Food';
 import './app.css';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         />
         <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />}
         />
+        <Route path="/food" element={<FoodStore />} />
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Play />
