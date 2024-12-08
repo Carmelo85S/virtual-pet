@@ -4,13 +4,13 @@ import Cat from '../assets/home-cat.svg';
 import '../style/animal-page/animal-page.css';
 
 const AnimalPage = () => {
-  const [hunger, setHunger] = useState(30); //start value
-  const [thirst, setThirst] = useState(20);; //start value
-  const [fun, setFun] = useState(10); //start value
+  const [hunger, setHunger] = useState(30);
+  const [thirst, setThirst] = useState(20); // Thirst parte da 0 (vuoto)
+  const [fun, setFun] = useState(10);
 
   // feed animal
   const feedAnimal = () => {
-    if (hunger < 100 !== 0) {
+    if (hunger < 100) {
       setHunger(hunger + 10);
     } else {
       alert("Thanks buddy but i am not hungry at the moment");
@@ -35,27 +35,6 @@ const AnimalPage = () => {
     }
   };
 
-  //decrement value every 10s
-
-  useEffect(() => {
-
-    const interval = setInterval (() => {
-
-      if(hunger > 0) {
-        setHunger(prevHunger => prevHunger -10);
-      }
-
-      if(thirst > 0) {
-        setThirst(prevThirst => prevThirst -10);
-      }
-
-      if(fun > 0) {
-        setFun(prevFun => prevFun -10);
-      }
-    },10000);
-
-    return () => clearInterval(interval);
-  }, [hunger, thirst, fun]);
 
   return (
     <section className="animal-page-container">
