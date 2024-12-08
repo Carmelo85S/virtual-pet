@@ -4,6 +4,8 @@ import Home from './page/Home';
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import PrivateRoute from "./components/private-route/PrivateRoute";
+import AnimalPage from './page/Animal-page';
+import Navbar from './components/navbar/Navbar';
 import './app.css';
 
 const App = () => {
@@ -27,6 +29,7 @@ const App = () => {
         />
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
+            <Navbar />
             <AnimalPage />
           </PrivateRoute>
         }/>
