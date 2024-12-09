@@ -5,8 +5,7 @@ import {
   Cookie,
   IceCream,
   Taco
-} from "../assets/form/food-drinks"
-
+} from "../assets/form/food-drinks.js"
 const FoodStore = () => {
   const [points, setPoints] = useState(100);
 
@@ -16,28 +15,28 @@ const FoodStore = () => {
       name: "Cookie",
       description: "Mmmmhmm a warm, soft cookie.",
       cost: 5,
-      img: {Cookie},
+      img: Cookie,
     },
     {
       id: 2,
       name: "Taco",
       description: "Crisp tortilla with yummy stuffing.",
       cost: 10,
-      img: {Taco},
+      img: Taco,
     },
     {
       id: 3,
       name: "Cheeseburger",
       description: "yummy burger for your furry friend!",
       cost: 15,
-      img: {CheeseBurger},
+      img: CheeseBurger,
     },
     {
       id: 4,
       name: "Ice Cream",
       description: "Strawberry ice cream for those warm days. ",
       cost: 5,
-      img: {IceCream},
+      img: IceCream,
     },
   ];
 
@@ -50,12 +49,12 @@ const FoodStore = () => {
   };
 
   return (
-    <div className={styles.mainContainer}>
+    <div className="mainContainer">
       <h1>Food Store</h1>
       <p>Points: {points}</p>
-      <div className={styles.foodContainer}>
+      <div className="foodContainer">
         {foodItems.map((food) => (
-          <div key={food.id} className={styles.foodItem}>
+          <div key={food.id} className="foodItem">
             <img src={food.img} alt={food.name} />
             <h3>{food.name}</h3>
             <p>{food.description}</p>
