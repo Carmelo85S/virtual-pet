@@ -1,0 +1,93 @@
+.mainContainer {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #000;
+    background: #B6DFE3;
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .mainContainer h1 {
+    margin-bottom: 10px;
+  }
+  .mainContainer p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+   
+  .foodContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 540px;
+    height: 342px;
+    padding: 65px 30px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    gap: 10px;
+    border: 1px solid #000;
+    background: #E5E4C7;
+  }
+   
+  .foodItem {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  .foodItem img {
+    width: 100px;
+    height: 100px;
+  }
+  .foodItem h3 {
+    color: #000;
+    font-family: "Micro 5";
+    font-size: 51px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 10px 0;
+  }
+  .foodItem p {
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%; /* 25.6px */
+    margin: 5px 0;
+  }
+  .foodItem button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 134px;
+    height: 41px;
+    padding: 10px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 10px;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    border: 1px solid #424040;
+    background: #FFC9E6;
+  }
+  .foodItem button:hover {
+    background-color: #45a049;
+  }
+  .foodItem button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }

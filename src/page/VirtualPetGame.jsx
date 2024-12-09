@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MathGame from "../components/Games/MathGame";
 import QuickQuiz from "../components/Games/Quickquiz";
 import '../style/Games/VirtualPetGame.css';
+import Cat from '../assets/home-cat.svg';
 
 const VirtualPetGame = () => {
   const [playerPoints, setPlayerPoints] = useState(0);
@@ -11,18 +12,7 @@ const VirtualPetGame = () => {
     setPlayerPoints((prevPoints) => prevPoints + points);
   };
 
-  const renderGameSelection = () => {
-    return (
-        <div className="game-selection">
-            <h2>Choose a Game</h2>
-            <div className="game-buttons">
-                <button onClick={() => setSelectedGame("math")}>Math Game</button>
-                <button onClick={() => setSelectedGame("quiz")}>Quick Quiz</button>
-            </div>
-        </div>
-    );
-  };
-
+  
   const renderSelectedGame = () => {
     switch (selectedGame) {
       case "math":
@@ -35,19 +25,26 @@ const VirtualPetGame = () => {
   };
 
   return (
-    <div className="virtual-pet-game">
-      <h1>Virtual Pet Game</h1>
-      <p>Total Points: {playerPoints}</p>
+    <div>
       {selectedGame ? (
-        <div>
-            <button onClick={() => seetSelectedGame(null)} className="back-button">Back to Game Selection</button>
-            {renderSelectedGame()}
-        </div>
-      ) : (
-        renderGameSelection()
-      )}
+    <div>
+    <button onClick={() => setSelectedGame(null)} className="back-button">Back to Games</button>
+    {renderSelectedGame()}
+  </div>
+) : (
+    <div className="game-frame">
+    <div className="virtual-pet-game">
+      <h1 className="game-title">Game Center</h1>
+      <p>Total Points: {playerPoints}</p>
+      <div className="game-buttons">
+      <button onClick={() => setSelectedGame('math')}>Math Game</button>
+      <button onClick={() => setSelectedGame('quiz')}>Quick Quiz</button>
       </div>
+      </div>
+      <img src={Cat} alt="cute pixel cat" className="game-cat" />
+      </div>
+  )};
+  </div>
   );
 };
-
 export default VirtualPetGame;
