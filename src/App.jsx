@@ -4,6 +4,7 @@ import Home from './page/Home';
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import PrivateRoute from "./components/private-route/PrivateRoute";
+import FoodStore from './page/Food';
 import AnimalPage from './page/Animal-page';
 import Navbar from './components/navbar/Navbar';
 import VirtualPetGame from './page/VirtualPetGame';
@@ -27,6 +28,7 @@ const App = () => {
         />
         <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />}
         />
+        <Route path="/food" element={<FoodStore />} />
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
