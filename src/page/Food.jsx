@@ -16,28 +16,28 @@ const FoodStore = () => {
       name: "Cookie",
       description: "Mmmmhmm a warm, soft cookie.",
       cost: 5,
-      img: {Cookie},
+      img: Cookie,
     },
     {
       id: 2,
       name: "Taco",
       description: "Crisp tortilla with yummy stuffing.",
       cost: 10,
-      img: {Taco},
+      img: Taco,
     },
     {
       id: 3,
       name: "Cheeseburger",
       description: "yummy burger for your furry friend!",
       cost: 15,
-      img: {CheeseBurger},
+      img: CheeseBurger,
     },
     {
       id: 4,
       name: "Ice Cream",
       description: "Strawberry ice cream for those warm days. ",
       cost: 5,
-      img: {IceCream},
+      img: IceCream,
     },
   ];
 

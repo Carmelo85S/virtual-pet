@@ -9,10 +9,13 @@ import AnimalPage from './page/Animal-page';
 import Navbar from './components/navbar/Navbar';
 import VirtualPetGame from './page/VirtualPetGame';
 import './app.css';
+import React from 'react';
+import JamendoTracks from './components/music/music'; // Adjust the path if needed
+ 
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+
     useEffect(() => {
       const userData = JSON.parse(localStorage.getItem('user'));
       if (userData && userData.expirationTime > new Date().getTime()) {
@@ -22,6 +25,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
+    {/* music */}
+    <JamendoTracks />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />}

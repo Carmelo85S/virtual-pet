@@ -6,8 +6,8 @@ import Cat from '../assets/home-cat.svg';
 import '../style/animal-page/animal-page.css';
 
 const AnimalPage = () => {
-  const [hunger, setHunger] = useState(30);
-  const [thirst, setThirst] = useState(10);
+  const [hunger, setHunger] = useState(100);
+  const [thirst, setThirst] = useState(100);
   const [isGameOver, setIsGameOver] = useState(false);
 
   const navigate = useNavigate();
@@ -38,19 +38,19 @@ const AnimalPage = () => {
 
   // Hunger effect every 10 seconds
   useEffect(() => {
-    if (hunger <= 10) {
+    if (hunger < 10) {
       setIsGameOver(true);
     } else {
       const hungerInterval = setInterval(() => {
         setHunger((prevHunger) => prevHunger - 10);
-      }, 10000);
+      }, 7500);
       return () => clearInterval(hungerInterval);
     }
   }, [hunger]);
 
   // Thirst effect every 10 seconds
   useEffect(() => {
-    if (thirst <= 0) {
+    if (thirst < 0) {
       setIsGameOver(true);
     } else {
       const thirstInterval = setInterval(() => {
@@ -71,8 +71,8 @@ const AnimalPage = () => {
   };
 
   const restartGame = () => {
-    setHunger(30);
-    setThirst(10);
+    setHunger(75);
+    setThirst(75);
     setIsGameOver(false);
   };
 
