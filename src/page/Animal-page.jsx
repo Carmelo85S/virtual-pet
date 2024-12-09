@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import GameOver from '../components/game-over/GameOver';
 import Star from '../assets/star.svg';
 import Cat from '../assets/home-cat.svg';
 import '../style/animal-page/animal-page.css';
@@ -6,53 +8,78 @@ import '../style/animal-page/animal-page.css';
 const AnimalPage = () => {
   const [hunger, setHunger] = useState(30);
   const [thirst, setThirst] = useState(10);
-  const [fun, setFun] = useState(10);
+  const [isGameOver, setIsGameOver] = useState(false);
 
-  // feed animal
+  const navigate = useNavigate();
+
+  // Feed animal
   const feedAnimal = () => {
     if (hunger < 100) {
       setHunger((h) => h + 10);
     } else {
-      alert("game over");
+      alert("Game over - Animal is full");
+      setIsGameOver(true);
     }
   };
 
-  // play function
-  const playAnimal = () => {
-    if (fun < 100) {
-      setFun(fun + 10);
-    }else {
-      alert("It was so much fun! Thanks for playing with me");
-    }
-  };
-
-  // hydrate function
+  // Hydrate animal
   const hydrateAnimal = () => {
     if (thirst < 100) {
       setThirst(thirst + 10);
-    }else {
+    } else {
       alert("Not thirsty");
+    }
+
+    // If thirst reaches 0, end the game
+    if (thirst <= 0) {
+      setIsGameOver(true);
     }
   };
 
+  // Hunger effect every 10 seconds
   useEffect(() => {
-    const hungerInterval = setInterval(() => {
-      setHunger((hunger <= 10 ? alert("game over"):  hunger - 10));
-    }, 2000);
-
+    if (hunger <= 10) {
+      setIsGameOver(true);
+    } else {
+      const hungerInterval = setInterval(() => {
+        setHunger((prevHunger) => prevHunger - 10);
+      }, 10000);
       return () => clearInterval(hungerInterval);
+    }
   }, [hunger]);
 
+  // Thirst effect every 10 seconds
   useEffect(() => {
-    const thirstInterval = setInterval(() => {
-      setThirst(prevThirst => prevThirst - 10);
-    }, 10000);
-
-    return () => clearInterval(thirstInterval);
+    if (thirst <= 0) {
+      setIsGameOver(true);
+    } else {
+      const thirstInterval = setInterval(() => {
+        setThirst((prevThirst) => prevThirst - 10);
+      }, 10000);
+      return () => clearInterval(thirstInterval);
+    }
   }, [thirst]);
+
+  // Play game
+  const handlePlay = () => {
+    navigate('/play/game');
+  };
+
+  // Feed page navigation
+  const handleFood = () => {
+    navigate('/play/food');
+  };
+
+  const restartGame = () => {
+    setHunger(30);
+    setThirst(10);
+    setIsGameOver(false);
+  };
 
   return (
     <section className="animal-page-container">
+      {isGameOver && <GameOver onRestart={restartGame} />}
+
       <section className="point-container">
         <p className="star-point-number" d="star">100</p>
         <img src={Star} alt="star points" />
@@ -87,15 +114,15 @@ const AnimalPage = () => {
               <p className="spec">Fun</p>
             </div>
             <div className="bar">
-              <div className="color" style={{ width: `${fun}%`, backgroundColor: '#FB5D5D' }}></div>
+              <div className="color" style={{ width: ``, backgroundColor: '#FB5D5D' }}></div>
             </div>
           </section>
         </section>
       </section>
 
       <section className="animal-page-btn">
-        <button className="btn-game" onClick={feedAnimal}>Feed</button>
-        <button className="btn-game" onClick={playAnimal}>Play</button>
+        <button className="btn-game" onClick={handleFood}>Feed</button>
+        <button className="btn-game" onClick={handlePlay}>Play</button>
         <button className="btn-game">Dress</button>
         <button className="btn-game" onClick={hydrateAnimal}>Hydrate</button>
       </section>

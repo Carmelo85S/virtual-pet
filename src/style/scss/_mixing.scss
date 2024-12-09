@@ -94,6 +94,35 @@
     }
 }
 
+@mixin restart-button{
+    display: flex;
+    max-width: 470px;
+    min-height: 50px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: font.$micro-5;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid black;
+    color: color.$btn-home-color;
+
+    &:hover {
+        background-color: color.$restart-button-hover;
+        transform: scale(1.05);
+        color:white;
+    }
+
+    &:active {
+        background-color: color.$restart-button-active;
+        transform: scale(0.98);
+        color:white;
+    }
+}
+
+
 @mixin nav-button{
     display: flex;
     max-width: 180px;
