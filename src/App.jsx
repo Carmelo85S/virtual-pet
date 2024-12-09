@@ -6,6 +6,7 @@ import Register from "./components/register/Register";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import AnimalPage from './page/Animal-page';
 import Navbar from './components/navbar/Navbar';
+import VirtualPetGame from './page/VirtualPetGame';
 import './app.css';
 
 const App = () => {
@@ -30,6 +31,13 @@ const App = () => {
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
             <AnimalPage />
+          </PrivateRoute>
+        }/>
+
+        <Route path="/play/game" element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <Navbar setIsAuthenticated={setIsAuthenticated}/>
+            <VirtualPetGame />
           </PrivateRoute>
         }/>
       </Routes>

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../components/navbar/Navbar";
-import '../style/Animal-page/QuickQuiz.css';
 
 const QuickQuiz = () => {
   const triviaQuestions = [
@@ -48,7 +46,6 @@ const QuickQuiz = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="quiz-container">
         <h2 className="quiz-title">Quick Quiz Challenge</h2>
         <div className="quiz-score">
