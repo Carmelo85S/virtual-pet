@@ -28,7 +28,6 @@ const App = () => {
         />
         <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />}
         />
-        <Route path="/food" element={<FoodStore />} />
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
@@ -40,6 +39,13 @@ const App = () => {
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
             <VirtualPetGame />
+          </PrivateRoute>
+        }/>
+
+        <Route path="/play/food" element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <Navbar setIsAuthenticated={setIsAuthenticated}/>
+            <FoodStore />
           </PrivateRoute>
         }/>
       </Routes>
