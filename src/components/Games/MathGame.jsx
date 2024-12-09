@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/navbar/Navbar";
-import '../style/Animal-page/MathGame.css';
 
 const MathGame = () => {
     const [question, setQuestion] = useState({});
@@ -35,7 +33,6 @@ const MathGame = () => {
 
       return (
         <div>
-          <Navbar />
           <div className="math-game-container">
             <h2 className="math-game-title">Math Game</h2>
             <div className="math-game-score">

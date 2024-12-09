@@ -14,7 +14,7 @@ const Navbar = ({ setIsAuthenticated }) => {
     };
 
     const handlePlayGame = () => {
-        navigate('/play');
+        navigate('/play/game');
     };
 
   return (

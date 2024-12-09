@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import MathGame from "./MathGame";
-import QuickQuiz from "./Quickquiz";
+import MathGame from "../components/Games/MathGame";
+import QuickQuiz from "../components/Games/Quickquiz";
 import '../style/Games/VirtualPetGame.css';
 
 const VirtualPetGame = () => {
   const [playerPoints, setPlayerPoints] = useState(0);
-  const [selectedGame, seetSelectedGame] = useState(null);
+  const [selectedGame, setSelectedGame] = useState(null);
 
   const handlePointsEarned = (points) => {
     setPlayerPoints((prevPoints) => prevPoints + points);
