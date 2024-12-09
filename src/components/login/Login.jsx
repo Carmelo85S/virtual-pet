@@ -15,9 +15,8 @@ const Login = ({ setIsAuthenticated }) => {
   
     const userData = JSON.parse(localStorage.getItem('user'));
   
-    if (userData && userData.user === username && userData.password === password) {
-
-      const expirationTime = new Date().getTime() + 3600000;
+    if (userData && userData.username === username && userData.password === password) {
+      const expirationTime = new Date().getTime() + 60000;
       const updatedUserData = { ...userData, expirationTime };
       localStorage.setItem('user', JSON.stringify(updatedUserData));
   
@@ -25,7 +24,7 @@ const Login = ({ setIsAuthenticated }) => {
   
       navigate("/play");
     } else {
-      alert('Wrong credentials');
+        alert('Wrong credentials');
     }
   };
   
@@ -48,7 +47,7 @@ const Login = ({ setIsAuthenticated }) => {
                 log in to enter our world!
               </h2>
           </section>
-          <label>Username:</label>
+          <label htmlFor="username">Username:</label>
           <input
             className="username"
             type="text"
@@ -58,7 +57,7 @@ const Login = ({ setIsAuthenticated }) => {
             placeholder="annapanna"
             required
           />
-          <label>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
             name="password"
@@ -69,7 +68,7 @@ const Login = ({ setIsAuthenticated }) => {
           />
         </section>
         <section className="sign-in-container">
-          <button className="sign-in" type="submit">Sign Up</button>
+          <button className="sign-in" type="submit">Sign In</button>
         </section>
         <section className="question-terms-container">
           <p className="question">

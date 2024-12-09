@@ -4,24 +4,26 @@ import Home from './page/Home';
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Play from './page/Play';
 import FoodStore from './page/Food';
+import AnimalPage from './page/Animal-page';
+import Navbar from './components/navbar/Navbar';
+import VirtualPetGame from './page/VirtualPetGame';
 import './app.css';
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    // Check localStorage to determine if the user is authenticated
-    const userData = JSON.parse(localStorage.getItem('user'));
-    if (userData && userData.expirationTime > new Date().getTime()) {
-      setIsAuthenticated(true);
-    }
-  }, []);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+    useEffect(() => {
+      const userData = JSON.parse(localStorage.getItem('user'));
+      if (userData && userData.expirationTime > new Date().getTime()) {
+        setIsAuthenticated(true);
+      }
+    }, []);
 
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />
         <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />}
@@ -29,7 +31,15 @@ const App = () => {
         <Route path="/food" element={<FoodStore />} />
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
-            <Play />
+            <Navbar setIsAuthenticated={setIsAuthenticated}/>
+            <AnimalPage />
+          </PrivateRoute>
+        }/>
+
+        <Route path="/play/game" element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <Navbar setIsAuthenticated={setIsAuthenticated}/>
+            <VirtualPetGame />
           </PrivateRoute>
         }/>
       </Routes>
