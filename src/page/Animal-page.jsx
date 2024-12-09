@@ -5,7 +5,7 @@ import '../style/animal-page/animal-page.css';
 
 const AnimalPage = () => {
   const [hunger, setHunger] = useState(30);
-  const [thirst, setThirst] = useState(20); // Thirst parte da 0 (vuoto)
+  const [thirst, setThirst] = useState(20);
   const [fun, setFun] = useState(10);
 
   // feed animal
@@ -34,7 +34,6 @@ const AnimalPage = () => {
       alert("Thanks buddy but i am not thirsty at the moment");
     }
   };
-
 
   return (
     <section className="animal-page-container">
