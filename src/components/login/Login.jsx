@@ -16,7 +16,7 @@ const Login = ({ setIsAuthenticated }) => {
     const userData = JSON.parse(localStorage.getItem('user'));
   
     if (userData && userData.username === username && userData.password === password) {
-      const expirationTime = new Date().getTime() + 60000; // Aggiorna il tempo di scadenza
+      const expirationTime = new Date().getTime() + 60000;
       const updatedUserData = { ...userData, expirationTime };
       localStorage.setItem('user', JSON.stringify(updatedUserData));
   

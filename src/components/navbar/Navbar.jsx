@@ -6,8 +6,15 @@ const Navbar = ({ setIsAuthenticated }) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        setIsAuthenticated(false);
-        navigate('/login');
+        const confirmLogout = window.confirm("Are you sure you want to log out?");
+        if (confirmLogout) {
+            setIsAuthenticated(false);
+            navigate('/login');
+        }
+    };
+
+    const handlePlayGame = () => {
+        navigate('/play');
     };
 
   return (
@@ -17,7 +24,7 @@ const Navbar = ({ setIsAuthenticated }) => {
                 <h2 className="logo">Virtual Pet</h2>
             </section>
             <section className="nav-btn">
-                <button className="btn play">Play Game</button>
+                <button className="btn play" onClick={handlePlayGame}>Play Game</button>
                 <button className="btn logout" onClick={handleLogout}>Log out</button>
             </section>
         </nav>
