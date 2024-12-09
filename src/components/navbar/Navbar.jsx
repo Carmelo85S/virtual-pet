@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import '../../style/navbar/navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ setIsAuthenticated }) => {
 
-    
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        setIsAuthenticated(false);
+        navigate('/login');
+    };
 
   return (
     <header>
@@ -12,7 +18,7 @@ const Navbar = () => {
             </section>
             <section className="nav-btn">
                 <button className="btn play">Play Game</button>
-                <button className="btn logout">Log out</button>
+                <button className="btn logout" onClick={handleLogout}>Log out</button>
             </section>
         </nav>
     </header>
