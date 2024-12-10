@@ -71,9 +71,10 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    cursor: pointer;
   }
   .foodItem button:hover {
-    background-color: #79b87c;
+    background-color: #55f05d;
   }
   .foodItem button:disabled {
     background-color: #ccc;
@@ -85,4 +86,11 @@
     height: 100px; 
     object-fit: contain;
   }
+
+  cursor:pointer
+ 
+.buttonClass:active{
+transform: scale (0.95);
+color: du väljer;
+}
   
