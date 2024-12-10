@@ -4,8 +4,7 @@ import {
   Beer,
   Wine
 } from "../assets/form/food-drinks.js"
-const DrinkStore = () => {
-  const [points, setPoints] = useState(100);
+const DrinkStore = ({points, setPoints}) => {
 
   const foodItems = [
     {
