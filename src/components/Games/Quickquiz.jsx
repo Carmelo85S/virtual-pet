@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "../../style/games/QuickQuiz.css";
+import Cat from '../../assets/home-cat.svg';
 
 const QuickQuiz = () => {
   const triviaQuestions = [
@@ -22,6 +24,11 @@ const QuickQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [score, setScore] = useState(0);
+
+  const onPointsEarned = (points) => {
+    setScore(score + points);
+  };
 
   const handleAnswerSubmit = () => {
     const correctAnswer = triviaQuestions[currentQuestion].correct;
@@ -46,6 +53,10 @@ const QuickQuiz = () => {
 
   return (
     <div>
+      <div className="game-frame">
+        <h1 className="game-title">Let's Play!</h1>
+      
+      
       <div className="quiz-container">
         <h2 className="quiz-title">Quick Quiz Challenge</h2>
         <div className="quiz-score">
@@ -77,6 +88,9 @@ const QuickQuiz = () => {
           {feedback}
         </p>
       </div>
+      <img src={Cat} alt="cute pixel cat" className="game-cat" />
+      </div>
+      
     </div>
   );
 };

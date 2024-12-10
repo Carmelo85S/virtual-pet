@@ -5,22 +5,12 @@ import Star from '../assets/star.svg';
 import Cat from '../assets/home-cat.svg';
 import '../style/animal-page/animal-page.css';
 
-const AnimalPage = () => {
-  const [hunger, setHunger] = useState(100);
-  const [thirst, setThirst] = useState(100);
+const AnimalPage = ({points}) => {
+  const [hunger, setHunger] = useState(50);
+  const [thirst, setThirst] = useState(90);
   const [isGameOver, setIsGameOver] = useState(false);
 
   const navigate = useNavigate();
-
-  // Feed animal
-  const feedAnimal = () => {
-    if (hunger < 100) {
-      setHunger((h) => h + 10);
-    } else {
-      alert("Game over - Animal is full");
-      setIsGameOver(true);
-    }
-  };
 
   // Hydrate animal
   const hydrateAnimal = () => {
@@ -70,6 +60,11 @@ const AnimalPage = () => {
     navigate('/play/food');
   };
 
+  // Feed page navigation
+  const handleHydrate = () => {
+    navigate('/play/drink');
+  };
+
   const restartGame = () => {
     setHunger(75);
     setThirst(75);
@@ -81,7 +76,8 @@ const AnimalPage = () => {
       {isGameOver && <GameOver onRestart={restartGame} />}
 
       <section className="point-container">
-        <p className="star-point-number" d="star">100</p>
+        <p className="star-point-number" id="star">{points}</p>
+        {console.log({points})}
         <img src={Star} alt="star points" />
       </section>
 
@@ -124,7 +120,7 @@ const AnimalPage = () => {
         <button className="btn-game" onClick={handleFood}>Feed</button>
         <button className="btn-game" onClick={handlePlay}>Play</button>
         <button className="btn-game">Dress</button>
-        <button className="btn-game" onClick={hydrateAnimal}>Hydrate</button>
+        <button className="btn-game" onClick={handleHydrate}>Hydrate</button>
       </section>
     </section>
   );

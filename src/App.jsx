@@ -8,6 +8,7 @@ import FoodStore from './page/Food';
 import AnimalPage from './page/Animal-page';
 import Navbar from './components/navbar/Navbar';
 import VirtualPetGame from './page/VirtualPetGame';
+import DrinkStore from './page/Drink';
 import './app.css';
 import React from 'react';
 import JamendoTracks from './components/music/music'; // Adjust the path if needed
@@ -15,6 +16,7 @@ import JamendoTracks from './components/music/music'; // Adjust the path if need
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [points, setPoints] = useState(100);
 
     useEffect(() => {
       const userData = JSON.parse(localStorage.getItem('user'));
@@ -36,11 +38,11 @@ const App = () => {
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <AnimalPage />
+            <AnimalPage points={points} setPoints={setPoints} />
           </PrivateRoute>
         }/>
 
-        <Route path="/play/game" element={
+          <Route path="/play/game" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
             <VirtualPetGame />
@@ -50,7 +52,14 @@ const App = () => {
         <Route path="/play/food" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <FoodStore />
+            <FoodStore points={points} setPoints={setPoints}/>
+          </PrivateRoute>
+        }/>
+
+        <Route path="/play/drink" element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <Navbar setIsAuthenticated={setIsAuthenticated}/>
+            <DrinkStore points={points} setPoints={setPoints}/>
           </PrivateRoute>
         }/>
       </Routes>

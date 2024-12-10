@@ -1,43 +1,27 @@
 import React, { useState } from "react";
 import '../../src/style/shop/shop.css';
 import {
-  CheeseBurger,
-  Cookie,
-  IceCream,
-  Taco
-} from "../assets/form/food-drinks"
-
-const FoodStore = ({points, setPoints}) => {
+  Beer,
+  Wine
+} from "../assets/form/food-drinks.js"
+const DrinkStore = ({points, setPoints}) => {
 
   const foodItems = [
     {
       id: 1,
-      name: "Cookie",
-      description: "Mmmmhmm a warm, soft cookie.",
-      cost: 5,
-      img: Cookie,
+      name: "Beer",
+      description: "Quench your furry friends thirst with a cold beer.",
+      cost: 15,
+      img: Beer,
     },
     {
       id: 2,
-      name: "Taco",
-      description: "Crisp tortilla with yummy stuffing.",
-      cost: 10,
-      img: Taco,
+      name: "Wine",
+      description: "Round, dry and flavors from nuts, apples and cilantro.",
+      cost: 20,
+      img: Wine,
     },
-    {
-      id: 3,
-      name: "Cheeseburger",
-      description: "yummy burger for your furry friend!",
-      cost: 15,
-      img: CheeseBurger,
-    },
-    {
-      id: 4,
-      name: "Ice Cream",
-      description: "Strawberry ice cream for those warm days. ",
-      cost: 5,
-      img: IceCream,
-    },
+
   ];
 
   const handleBuy = (cost) => {
@@ -71,4 +55,4 @@ const FoodStore = ({points, setPoints}) => {
   );
 };
 
-export default FoodStore;
+export default DrinkStore;
