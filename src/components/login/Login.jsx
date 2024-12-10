@@ -13,20 +13,34 @@ const Login = ({ setIsAuthenticated }) => {
   const handleLogin = (e) => {
     e.preventDefault();
   
-    const userData = JSON.parse(localStorage.getItem('user'));
+    const getUserData = () => {
+      const userData = JSON.parse(localStorage.getItem('user'));
+  
+      if (userData && userData.expirationTime) {
+        const currentTime = new Date().getTime();
+        if (currentTime > userData.expirationTime) {
+          localStorage.removeItem('user');
+          return null; // Data has expired
+        }
+        return userData; // Data is still valid
+      }
+      return null; // No user data found
+    };
+  
+    const userData = getUserData(); // Call getUserData to retrieve user information
   
     if (userData && userData.username === username && userData.password === password) {
-      const expirationTime = new Date().getTime() + 60000;
+      const expirationTime = new Date().getTime() + 60000; // Expire in 1 minute
       const updatedUserData = { ...userData, expirationTime };
       localStorage.setItem('user', JSON.stringify(updatedUserData));
   
       setIsAuthenticated(true);
-  
       navigate("/play");
     } else {
-        alert('Wrong credentials');
+      alert('Wrong credentials');
     }
   };
+  
   
   return (
     <div className="form-wrapper">

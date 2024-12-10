@@ -81,7 +81,7 @@ const AnimalPage = () => {
       {isGameOver && <GameOver onRestart={restartGame} />}
 
       <section className="point-container">
-        <p className="star-point-number" d="star">100</p>
+        <p className="star-point-number" id="star">0</p>
         <img src={Star} alt="star points" />
       </section>
 
