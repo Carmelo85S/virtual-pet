@@ -49,26 +49,25 @@ const FoodStore = () => {
   };
 
   return (
-    <div className="mainContainer">
-      <h1>Food Store</h1>
-      <p>Points: {points}</p>
-      <div className="foodContainer">
-        {foodItems.map((food) => (
-          <div key={food.id} className="foodItem">
-            <img src={food.img} alt={food.name} />
-            <h3>{food.name}</h3>
-            <p>{food.description}</p>
-            <p>Cost: {food.cost} points</p>
-            <button
-              onClick={() => handleBuy(food.cost)}
-              disabled={points < food.cost}
-            >
-              Buy
-            </button>
-          </div>
-        ))}
+<div className="mainContainer">
+  {foodItems.map((food) => (
+    <div key={food.id} className="foodItem">
+      <div className="foodDetails">
+        <h3>{food.name}</h3>
+        <p>{food.description}</p>
+        <p>Cost: {food.cost} points</p>
+        <button
+          onClick={() => handleBuy(food.cost)}
+          disabled={points < food.cost}
+        >
+          Buy
+        </button>
       </div>
+      <img src={food.img} alt={food.name} className="foodImage" />
     </div>
+  ))}
+</div>
+
   );
 };
 
