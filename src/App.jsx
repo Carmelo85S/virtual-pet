@@ -35,7 +35,7 @@ const App = () => {
           </PrivateRoute>
         }/>
 
-        <Route path="/play/game" element={
+          <Route path="/play/game" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
             <VirtualPetGame />
