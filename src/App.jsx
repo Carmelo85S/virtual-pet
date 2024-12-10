@@ -13,7 +13,8 @@ import './app.css';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+    const [points, setPoints] = useState(100);
+
     useEffect(() => {
       const userData = JSON.parse(localStorage.getItem('user'));
       if (userData && userData.expirationTime > new Date().getTime()) {
@@ -32,7 +33,7 @@ const App = () => {
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <AnimalPage />
+            <AnimalPage points={points} setPoints={setPoints} />
           </PrivateRoute>
         }/>
 
@@ -46,7 +47,7 @@ const App = () => {
         <Route path="/play/food" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <FoodStore />
+            <FoodStore points={points} setPoints={setPoints}/>
           </PrivateRoute>
         }/>
 
