@@ -19,11 +19,24 @@ header{
         }
 
         .nav-btn{
-            @include container(400px, 70px);
+            @include container(600px, 70px);
             @include flexbox(space-between, center); 
 
             .btn{
                 @include nav-button;
+            }
+
+            .game-center{
+                background-color: color.$pet-center;
+
+                &:hover{
+                    background-color: color.$pet-center-hover;
+                    }
+    
+                    &:active{
+                        background-color: color.$pet-center-active;
+                        transform: scale(0.95);
+                    }
             }
 
             .logout{

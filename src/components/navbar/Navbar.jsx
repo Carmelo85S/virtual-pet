@@ -17,6 +17,10 @@ const Navbar = ({ setIsAuthenticated }) => {
         navigate('/play/game');
     };
 
+    const handleGameCenter = () => {
+        navigate('/play/');
+    };
+
   return (
     <header>
         <nav>
@@ -24,6 +28,7 @@ const Navbar = ({ setIsAuthenticated }) => {
                 <h2 className="logo">Virtual Pet</h2>
             </section>
             <section className="nav-btn">
+                <button className="btn game-center" onClick={handleGameCenter}>Pet Center</button>
                 <button className="btn play" onClick={handlePlayGame}>Play Game</button>
                 <button className="btn logout" onClick={handleLogout}>Log out</button>
             </section>
