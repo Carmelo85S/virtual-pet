@@ -5,9 +5,9 @@ import {
   Cookie,
   IceCream,
   Taco
-} from "../assets/form/food-drinks.js"
-const FoodStore = () => {
-  const [points, setPoints] = useState(100);
+} from "../assets/form/food-drinks"
+
+const FoodStore = ({points, setPoints}) => {
 
   const foodItems = [
     {
