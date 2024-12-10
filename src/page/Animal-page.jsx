@@ -60,6 +60,11 @@ const AnimalPage = ({points}) => {
     navigate('/play/food');
   };
 
+  // Feed page navigation
+  const handleHydrate = () => {
+    navigate('/play/drink');
+  };
+
   const restartGame = () => {
     setHunger(90);
     setThirst(90);
@@ -115,7 +120,7 @@ const AnimalPage = ({points}) => {
         <button className="btn-game" onClick={handleFood}>Feed</button>
         <button className="btn-game" onClick={handlePlay}>Play</button>
         <button className="btn-game">Dress</button>
-        <button className="btn-game" onClick={hydrateAnimal}>Hydrate</button>
+        <button className="btn-game" onClick={handleHydrate}>Hydrate</button>
       </section>
     </section>
   );
