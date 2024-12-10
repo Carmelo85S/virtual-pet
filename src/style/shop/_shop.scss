@@ -3,88 +3,86 @@
 @import '../scss/mixing';
 
 .mainContainer {
-    padding: 20px;
-    text-align: center;
-    border: 1px solid #000;
-    background: #B6DFE3;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  
-    h1 {
-      margin-bottom: 10px;
-    }
-  
-    p {
-      font-size: 18px;
-      margin: 5px 0;
-    }
-  }
-  
-  .foodContainer {
-    display: flex;
-    width: 540px;
-    height: 342px;
-    padding: 65px 30px;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-shrink: 0;
-    gap: 10px;
-    border: 1px solid #000;
-    background: #E5E4C7;
-  }
-  
+  @include flexbox(space-between, flex-start, row, wrap);
+  @include container(1172px, 786px);
+  gap: 20px; /* Space between items */
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #000;
+  background: #B6DFE3;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
   .foodItem {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 10px;
-    width: 200px;
-    text-align: center;
-  
-    img {
-      width: 100px;
-      height: 100px;
-    }
-  
-    h3 {
-      color: #000;
-      font-family: "Micro 5";
-      font-size: 51px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      margin: 10px 0;
-    }
-  
-    p {
-      color: #000;
-      font-family: Poppins;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 160%; /* 25.6px */
-      margin: 5px 0;
-    }
-  
-    button {
-      display: flex;
+    @include flexbox(space-between, center); 
+    @include container(540px, 342px);
+    border: 1px solid #292929;
+    padding: 50px;
+    text-align: start;
+    background-color: color.$game-center-bg;
+
+    .foodDetails {
+      flex: 1; 
+      margin-right: 16px; 
+      
+      h3 {
+        margin: 0 0 8px; 
+        color: #000;
+        font-family: font.$micro-5;
+        font-size: 51px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      p {
+        margin: 4px 0;
+        color: #555;
+      }
+
+      button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      @include flexbox(center, center);
       width: 134px;
       height: 41px;
       padding: 10px;
-      justify-content: center;
-      align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
       gap: 10px;
-      flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
       border: 1px solid #424040;
       background: #FFC9E6;
-  
-      &:hover {
-        background-color: #45a049;
+      font-family: font.$micro-5;
+      font-size: 26px;
+      cursor: pointer;
+
+        &:hover {
+          background-color: #55f05d;
+        }
+        
+        &:active {
+          transform: scale(0.90);
+          background-color: #55d9f0;
+        }
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
       }
-  
-      &:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
+
+      .foodImage {
+        width: 100px;
+        height: 100px; 
+        object-fit: contain;
       }
     }
   }
-  
+}
