@@ -8,6 +8,7 @@ import FoodStore from './page/Food';
 import AnimalPage from './page/Animal-page';
 import Navbar from './components/navbar/Navbar';
 import VirtualPetGame from './page/VirtualPetGame';
+import DrinkStore from './page/Drink';
 import './app.css';
 
 const App = () => {
@@ -47,6 +48,13 @@ const App = () => {
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
             <FoodStore points={points} setPoints={setPoints}/>
+          </PrivateRoute>
+        }/>
+
+        <Route path="/play/drink" element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <Navbar setIsAuthenticated={setIsAuthenticated}/>
+            <DrinkStore />
           </PrivateRoute>
         }/>
       </Routes>
