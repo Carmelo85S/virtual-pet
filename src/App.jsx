@@ -62,7 +62,7 @@ const App = () => {
         <Route path="/play/drink" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <DrinkStore />
+            <DrinkStore points={points} setPoints={setPoints}/>
           </PrivateRoute>
         }/>
       </Routes>
