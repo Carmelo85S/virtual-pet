@@ -5,22 +5,12 @@ import Star from '../assets/star.svg';
 import Cat from '../assets/home-cat.svg';
 import '../style/animal-page/animal-page.css';
 
-const AnimalPage = () => {
-  const [hunger, setHunger] = useState(30);
-  const [thirst, setThirst] = useState(10);
+const AnimalPage = ({points}) => {
+  const [hunger, setHunger] = useState(50);
+  const [thirst, setThirst] = useState(90);
   const [isGameOver, setIsGameOver] = useState(false);
 
   const navigate = useNavigate();
-
-  // Feed animal
-  const feedAnimal = () => {
-    if (hunger < 100) {
-      setHunger((h) => h + 10);
-    } else {
-      alert("Game over - Animal is full");
-      setIsGameOver(true);
-    }
-  };
 
   // Hydrate animal
   const hydrateAnimal = () => {
@@ -71,8 +61,8 @@ const AnimalPage = () => {
   };
 
   const restartGame = () => {
-    setHunger(30);
-    setThirst(10);
+    setHunger(90);
+    setThirst(90);
     setIsGameOver(false);
   };
 
@@ -81,7 +71,8 @@ const AnimalPage = () => {
       {isGameOver && <GameOver onRestart={restartGame} />}
 
       <section className="point-container">
-        <p className="star-point-number" id="star">0</p>
+        <p className="star-point-number" id="star">{points}</p>
+        {console.log({points})}
         <img src={Star} alt="star points" />
       </section>
 

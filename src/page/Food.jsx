@@ -7,8 +7,7 @@ import {
   Taco
 } from "../assets/form/food-drinks"
 
-const FoodStore = () => {
-  const [points, setPoints] = useState(100);
+const FoodStore = ({points, setPoints}) => {
 
   const foodItems = [
     {
