@@ -25,10 +25,10 @@ const JamendoTracks = () => {
           setTrackUrl(track.audio);
           console.log(track);
         } else {
-          throw new Error('Nessun risultato trovato');
+          throw new Error('No track found');
         }
       } catch (err) {
-        console.error("Errore API:", err.message);
+        console.error("Error API:", err.message);
         setError(err.message); 
       } finally {
         setLoading(false); 
