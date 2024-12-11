@@ -9,6 +9,7 @@ import AnimalPage from './page/Animal-page';
 import Navbar from './components/navbar/Navbar';
 import VirtualPetGame from './page/VirtualPetGame';
 import DrinkStore from './page/Drink';
+import ClothStore from './page/Cloth';
 import './app.css';
 import React from 'react';
 import JamendoTracks from './components/music/music'; // Adjust the path if needed
@@ -53,6 +54,13 @@ const App = () => {
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
             <FoodStore points={points} setPoints={setPoints}/>
+          </PrivateRoute>
+        }/>
+
+        <Route path="/play/clothes" element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <Navbar setIsAuthenticated={setIsAuthenticated}/>
+            <ClothStore points={points} setPoints={setPoints}/>
           </PrivateRoute>
         }/>
 
