@@ -26,6 +26,12 @@ const AnimalPage = ({points}) => {
     }
   };
 
+  //points update in Animal Page
+  useEffect(() => {
+    console.log("Points updated in AnimalPage:", points);
+  }, [points]);
+  
+
   // Hunger effect every 10 seconds
   useEffect(() => {
     if (hunger < 10) {
