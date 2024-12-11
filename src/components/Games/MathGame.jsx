@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../style/games/MathGame.css";
 import Cat from '../../assets/home-cat.svg';
 
-const MathGame = ({ onPointsEarned }) => {
+const MathGame = ({ onPointsEarned, points, setPoints }) => {
     const [question, setQuestion] = useState({});
     const [answer, setAnswer] = useState("");
     const [feedback, setFeedback] = useState("");
@@ -28,16 +28,28 @@ const MathGame = ({ onPointsEarned }) => {
 
   const checkAnswer = () => {
     if (parseInt(answer, 10) === question.correctAnswer) {
+      const earnedPoints = 10; // Points earned
+
       setFeedback("Correct! 🎉");
-      const points = 10;
-      setScore(prevScore => prevScore + points);
-      setQuestionCount(prevCount => prevCount + 1);
-      if (onPointsEarned) {
-        onPointsEarned(points);
-      }
+      setScore((prevScore) => prevScore + earnedPoints);
+  
+      // Update points after correct answer
+      setPoints((prevPoints) => {
+        const updatedPoints = prevPoints + earnedPoints;
+
+        // Pass the updated points to the parent component
+        if (onPointsEarned) {
+          onPointsEarned(updatedPoints);  // Pass the updated points value
+        }
+
+        return updatedPoints; // Return updated points to be saved in state
+        
+      });
+  
+      setQuestionCount((prevCount) => prevCount + 1);
     } else {
       setFeedback("Incorrect, try again! ❌");
-      setLives(prev => prev - 1);
+      setLives((prev) => prev - 1);
     }
     setTimeLeft(10);
     setTimeout(() => {

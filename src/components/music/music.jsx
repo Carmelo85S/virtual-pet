@@ -19,18 +19,22 @@ const JamendoTracks = () => {
             limit: 1,
           },
         });
-
         
-        const track = response.data.results[0];
-        setTrackUrl(track.audio_url);
-
+        if (response.data && response.data.results.length > 0) {
+          const track = response.data.results[0];
+          setTrackUrl(track.audio);
+          console.log(track);
+        } else {
+          throw new Error('Nessun risultato trovato');
+        }
       } catch (err) {
+        console.error("Errore API:", err.message);
         setError(err.message); 
       } finally {
         setLoading(false); 
       }
     };
-
+    
     fetchTrack();
   }, []);
 
@@ -41,7 +45,7 @@ const JamendoTracks = () => {
     <div>
       {/* The audio player is hidden, just play in the background */}
       {trackUrl && (
-        <audio autoPlay loop hidden>
+        <audio autoPlay loop>
           <source src={trackUrl} type="audio/mp3" />
         </audio>
       )}
