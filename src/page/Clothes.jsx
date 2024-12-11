@@ -5,7 +5,7 @@ import {
   PartyHat,
   FarmersHat,
   Scarf
-} from "../assets/form/food-drinks"
+} from "../assets/form/clothes.js"
 
 const ClothStore = ({points, setPoints}) => {
 
