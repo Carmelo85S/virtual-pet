@@ -26,21 +26,27 @@ const AnimalPage = ({points}) => {
     }
   };
 
+  //points update in Animal Page
+  useEffect(() => {
+    console.log("Points updated in AnimalPage:", points);
+  }, [points]);
+  
+
   // Hunger effect every 10 seconds
   useEffect(() => {
-    if (hunger <= 10) {
+    if (hunger < 10) {
       setIsGameOver(true);
     } else {
       const hungerInterval = setInterval(() => {
         setHunger((prevHunger) => prevHunger - 10);
-      }, 10000);
+      }, 7500);
       return () => clearInterval(hungerInterval);
     }
   }, [hunger]);
 
   // Thirst effect every 10 seconds
   useEffect(() => {
-    if (thirst <= 0) {
+    if (thirst < 0) {
       setIsGameOver(true);
     } else {
       const thirstInterval = setInterval(() => {
@@ -66,8 +72,8 @@ const AnimalPage = ({points}) => {
   };
 
   const restartGame = () => {
-    setHunger(90);
-    setThirst(90);
+    setHunger(75);
+    setThirst(75);
     setIsGameOver(false);
   };
 

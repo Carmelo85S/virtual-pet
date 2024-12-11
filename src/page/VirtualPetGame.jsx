@@ -4,21 +4,21 @@ import QuickQuiz from "../components/Games/Quickquiz";
 import '../style/Games/VirtualPetGame.css';
 import Cat from '../assets/home-cat.svg';
 
-const VirtualPetGame = () => {
+const VirtualPetGame = ({points, setPoints }) => {
   const [playerPoints, setPlayerPoints] = useState(0);
   const [selectedGame, setSelectedGame] = useState(null);
 
-  const handlePointsEarned = (points) => {
-    setPlayerPoints((prevPoints) => prevPoints + points);
+  const handlePointsEarned = (earnedPoints) => {
+    setPlayerPoints((prevPoints) => prevPoints + earnedPoints);
   };
 
   
   const renderSelectedGame = () => {
     switch (selectedGame) {
       case "math":
-        return <MathGame onPointsEarned={handlePointsEarned} />;
+        return <MathGame points={points} setPoints={setPoints} onPointsEarned={handlePointsEarned} />;
       case "quiz":
-        return <QuickQuiz onPointsEarned={handlePointsEarned} />;
+        return <QuickQuiz points={points} setPoints={setPoints} onPointsEarned={handlePointsEarned} />;
       default:
         return null;
     }

@@ -11,6 +11,9 @@ import VirtualPetGame from './page/VirtualPetGame';
 import DrinkStore from './page/Drink';
 import ClothStore from './page/Clothes';
 import './app.css';
+import React from 'react';
+import JamendoTracks from './components/music/music';
+ 
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,6 +28,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
+    {/* music */}
+    <JamendoTracks />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />}
@@ -41,7 +46,7 @@ const App = () => {
           <Route path="/play/game" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <VirtualPetGame />
+            <VirtualPetGame points={points} setPoints={setPoints}/>
           </PrivateRoute>
         }/>
 
