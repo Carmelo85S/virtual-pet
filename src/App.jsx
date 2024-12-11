@@ -11,6 +11,9 @@ import VirtualPetGame from './page/VirtualPetGame';
 import DrinkStore from './page/Drink';
 import ClothStore from './page/Cloth';
 import './app.css';
+import React from 'react';
+import JamendoTracks from './components/music/music'; // Adjust the path if needed
+ 
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,6 +28,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
+    {/* music */}
+    <JamendoTracks />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />}
