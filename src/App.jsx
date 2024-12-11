@@ -9,7 +9,7 @@ import AnimalPage from './page/Animal-page';
 import Navbar from './components/navbar/Navbar';
 import VirtualPetGame from './page/VirtualPetGame';
 import DrinkStore from './page/Drink';
-import ClothStore from './page/Cloth';
+import ClothStore from './page/Clothes';
 import './app.css';
 
 const App = () => {
