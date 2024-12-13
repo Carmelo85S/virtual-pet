@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../style/games/QuickQuiz.css";
 import Cat from '../../assets/home-cat.svg';
 
-const QuickQuiz = () => {
+const QuickQuiz = ({points, setPoints}) => {
   const triviaQuestions = [
     {
       question: "How many legs does a spider have?",
@@ -19,13 +19,68 @@ const QuickQuiz = () => {
       options: ["Carrots", "Fish", "Bread", "Berries"],
       correct: "Carrots",
     },
+    {
+      question: "What color is the sky on a clear day?",
+      options: ["Red", "Green", "Blue", "Yellow"],
+      correct: "Blue"
+    },
+    {
+      question: "What animal is known for saying 'meow'?",
+      options: ["Dog", "Cat", "Cow", "Duck"],
+      correct: "Cat"
+    },
+    {
+      question: "Which fruit is yellow and is a monkey's favorite?",
+      options: ["Apple", "Banana", "Grapes", "Orange"],
+      correct: "Banana"
+    },
+    {
+      question: "What do you call a baby dog?",
+      options: ["Puppy", "Kitten", "Calf", "Cub"],
+      correct: "Puppy"
+    },
+    {
+      question: "What shape has 4 equal sides?",
+      options: ["Circle", "Triangle", "Square", "Rectangle"],
+      correct: "Square"
+    },
+    {
+      question: "Which one of these animals can fly?",
+      options: ["Lion", "Penguin", "Eagle", "Elephant"],
+      correct: "Eagle"
+    },
+    {
+      question: "What color are most grasshoppers?",
+      options: ["Red", "Green", "Blue", "Yellow"],
+      correct: "Green"
+    },
+    {
+      question: "Which of these is a popular superhero with a red suit?",
+      options: ["Iron Man", "Spider-Man", "Superman", "Batman"],
+      correct: "Spider-Man"
+    },
+    {
+      question: "What do you call the person who helps you when you're sick?",
+      options: ["Teacher", "Doctor", "Baker", "Farmer"],
+      correct: "Doctor"
+    },
+    {
+      question: "Which animal has a long neck and is known for eating leaves from trees?",
+      options: ["Elephant", "Giraffe", "Kangaroo", "Panda"],
+      correct: "Giraffe"
+    }
   ];
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+   //random question index
+   const getRandomQuestion = () => {
+    return Math.floor(Math.random() * triviaQuestions.length);
+  }; 
+
+  const [currentQuestion, setCurrentQuestion] = useState(getRandomQuestion());
   const [selectedOption, setSelectedOption] = useState("");
   const [feedback, setFeedback] = useState("");
   const [score, setScore] = useState(0);
-
+  
   const onPointsEarned = (points) => {
     setScore(score + points);
   };
@@ -36,6 +91,10 @@ const QuickQuiz = () => {
     if (selectedOption === correctAnswer) {
       setFeedback("Correct! 🎉");
       onPointsEarned(10);
+
+      //update points globally
+      setPoints((prevPoints) => prevPoints + 10);
+      
     } else {
       setFeedback(`Incorrect! The correct answer was ${correctAnswer}. ❌`);
     }
@@ -44,7 +103,9 @@ const QuickQuiz = () => {
       setFeedback("");
       setSelectedOption("");
       if (currentQuestion < triviaQuestions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
+        
+        //call getRandomQuestion for a new question
+        setCurrentQuestion(getRandomQuestion);
       } else {
         setFeedback("You’ve completed the quiz!");
       }
