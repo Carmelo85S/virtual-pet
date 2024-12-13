@@ -18,7 +18,7 @@ const VirtualPetGame = ({points, setPoints }) => {
       case "math":
         return <MathGame points={points} setPoints={setPoints} onPointsEarned={handlePointsEarned} />;
       case "quiz":
-        return <QuickQuiz points={points} setPoints={setPoints} onPointsEarned={handlePointsEarned} />;
+        return <QuickQuiz points={points} setPoints={setPoints} playerPoints={playerPoints} setPlayerPoints={setPlayerPoints} onPointsEarned={handlePointsEarned} />;
       default:
         return null;
     }

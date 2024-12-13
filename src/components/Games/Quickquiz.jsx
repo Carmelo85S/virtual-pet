@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../style/games/QuickQuiz.css";
 import Cat from '../../assets/home-cat.svg';
 
-const QuickQuiz = ({points, setPoints}) => {
+const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
   const triviaQuestions = [
     {
       question: "How many legs does a spider have?",
@@ -65,93 +65,129 @@ const QuickQuiz = ({points, setPoints}) => {
       correct: "Doctor"
     },
     {
-      question: "Which animal has a long neck and is known for eating leaves from trees?",
+      question: "Which animal has a long neck?",
       options: ["Elephant", "Giraffe", "Kangaroo", "Panda"],
       correct: "Giraffe"
     }
   ];
 
-   //random question index
-   const getRandomQuestion = () => {
+  // Function to get a random question index
+  const getRandomQuestion = () => {
     return Math.floor(Math.random() * triviaQuestions.length);
-  }; 
-
-  const [currentQuestion, setCurrentQuestion] = useState(getRandomQuestion());
-  const [selectedOption, setSelectedOption] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [score, setScore] = useState(0);
-  
-  const onPointsEarned = (points) => {
-    setScore(score + points);
   };
 
-  const handleAnswerSubmit = () => {
+  const [currentQuestion, setCurrentQuestion] = useState(getRandomQuestion()); // Tracks the current question index
+  const [selectedOption, setSelectedOption] = useState(""); // Tracks the selected option
+  const [feedback, setFeedback] = useState(""); // Feedback for the answer
+  const [score, setScore] = useState(0); // User's score
+  const [timer, setTimer] = useState(10); // Timer for each question
+  const [lives, setLives] = useState(3); // Game lives
+  const [isGameOver, setIsGameOver] = useState(false); // Game over state
+  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false); // Flag to prevent multiple submissions
+
+  const onPointsEarned = (points) => {
+    setScore(score + points); // Adds points to the score
+  };
+
+  // Handles the answer submission when an option is clicked
+  const handleAnswerSelection = (option) => {
+    if (isGameOver || isAnswerSubmitted) return; // Prevent multiple submissions and game over state
+
+    setSelectedOption(option); // Set the selected option
+    setIsAnswerSubmitted(true); // Prevent more selection after submission
+
     const correctAnswer = triviaQuestions[currentQuestion].correct;
 
-    if (selectedOption === correctAnswer) {
+    if (option === correctAnswer) {
       setFeedback("Correct! 🎉");
-      onPointsEarned(10);
+      onPointsEarned(10); // Earn points for correct answer
 
-      //update points globally
+      // Update points globally
       setPoints((prevPoints) => prevPoints + 10);
-      
+      setPlayerPoints(prevPlayerPoints => prevPlayerPoints + 10);
     } else {
       setFeedback(`Incorrect! The correct answer was ${correctAnswer}. ❌`);
+      setLives(lives - 1);
+      //if lives  is zero stop the game
+      if (lives - 1 === 0) {
+        setIsGameOver(true);
+        setFeedback("Game Over! ❌");
+        return;
+      }
     }
 
     setTimeout(() => {
-      setFeedback("");
-      setSelectedOption("");
-      if (currentQuestion < triviaQuestions.length - 1) {
-        
-        //call getRandomQuestion for a new question
-        setCurrentQuestion(getRandomQuestion);
-      } else {
-        setFeedback("You’ve completed the quiz!");
+      if (!isGameOver) {
+        setFeedback("");
+        setSelectedOption(""); // Reset selected option
+        setCurrentQuestion(getRandomQuestion()); // Set new question
+        setTimer(10); // Reset timer for next question
       }
-    }, 2000);
+      setIsAnswerSubmitted(false); // Allow for answer submission again
+    }, 1000); // Short delay before resetting for the next question
   };
+
+  // Effect to manage the countdown timer
+  useEffect(() => {
+    if (isGameOver) return; // Stop timer if game over
+
+    if (timer === 0) {
+      // If timer hits 0, move to the next question
+      handleAnswerSelection(""); // Handle timeout like an answer selection
+      return; // Prevents the timer from continuing to count down
+    }
+
+    // Set interval to decrease the timer every second
+    const timerId = setInterval(() => {
+      setTimer((prevTimer) => prevTimer - 1);
+    }, 1000);
+
+    // Clean up interval on component unmount or when timer is 0
+    return () => clearInterval(timerId);
+  }, [timer, isGameOver]); // Dependency array ensures the effect runs when the timer changes
 
   return (
     <div>
       <div className="game-frame">
         <h1 className="game-title">Let's Play!</h1>
-      
-      
-      <div className="quiz-container">
-        <h2 className="quiz-title">Quick Quiz Challenge</h2>
-        <div className="quiz-score">
-          Score: {score}
-        </div>
-        <div className="quiz-question-container">
-          <p className="quiz-question">
-            {triviaQuestions[currentQuestion].question}
-          </p>
-          <div className="quiz-options">
-            {triviaQuestions[currentQuestion].options.map((option) => (
-              <button
-                key={option}
-                onClick={() => setSelectedOption(option)}
-                className={`quiz-option-button ${selectedOption === option ? 'selected' : ''}`}
-              >
-                {option}
-              </button>
-            ))}
+
+        <div className="quiz-container">
+          <h2 className="quiz-title">Quick Quiz Challenge</h2>
+          <div className="game-status">
+            <div className="quiz-score">
+              Score: {score}
+            </div>
+            <div className="quiz-game-timer">
+              Time: {timer}s {/* Display remaining time */}
+            </div>
+            <div className="quiz-game-lives">
+              Lives: {lives} / 3 {/* Display remaining life */}
+            </div>
           </div>
-          <button 
-            onClick={handleAnswerSubmit}
-            className="quiz-submit-button"
-          >
-            Submit Answer
-          </button>
+          <div className="quiz-question-container">
+            <p className="quiz-question">
+              {triviaQuestions[currentQuestion].question} {/* Display the current question */}
+            </p>
+            <div className="quiz-options">
+              {/* Map over the options and display buttons */}
+              {triviaQuestions[currentQuestion].options.map((option) => (
+                <button
+                  key={option}
+                  onClick={() => handleAnswerSelection(option)} // Set the selected option and submit
+                  className={`quiz-option-button ${selectedOption === option ? 'selected' : ''}`} // Highlight selected option
+                  disabled={isAnswerSubmitted} // Disable options after answer submission
+                >
+                  {option} {/* Option text */}
+                </button>
+              ))}
+            </div>
+          </div>
+          <p className={`quiz-feedback ${feedback.includes('Correct') ? 'correct' : 'incorrect'}`}>
+            {feedback} {/* Display feedback */}
+          </p>
         </div>
-        <p className={`quiz-feedback ${feedback.includes('Correct') ? 'correct' : 'incorrect'}`}>
-          {feedback}
-        </p>
+        <img src={Cat} alt="cute pixel cat" className="game-cat" /> {/* Display cat image */}
       </div>
-      <img src={Cat} alt="cute pixel cat" className="game-cat" />
-      </div>
-      
     </div>
   );
 };
