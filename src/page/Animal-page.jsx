@@ -83,7 +83,6 @@ const AnimalPage = ({points}) => {
 
       <section className="point-container">
         <p className="star-point-number" id="star">{points}</p>
-        {console.log({points})}
         <img src={Star} alt="star points" />
       </section>
 
@@ -125,7 +124,7 @@ const AnimalPage = ({points}) => {
       <section className="animal-page-btn">
         <button className="btn-game" onClick={handleFood}>Feed</button>
         <button className="btn-game" onClick={handlePlay}>Play</button>
-        <button className="btn-game">Dress</button>
+        <button className="btn-game">Store</button>
         <button className="btn-game" onClick={handleHydrate}>Hydrate</button>
       </section>
     </section>
