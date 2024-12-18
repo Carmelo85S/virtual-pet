@@ -67,3 +67,35 @@
         }
     }
 }
+
+@media screen and (min-width:320px) and (max-width:500px) {
+    .home-wrapper{
+        .home-container{
+            @include container(500px, 500px);
+    
+            .title-container{
+                .title{
+                    @include logo;
+                    font-size: 85px;
+                    text-align: center;
+                }
+            }
+    
+            .cta-container{
+                .lets-play{
+                    font-size: 24px;
+                }
+    
+                .btn-container{
+                    @include container(300px, 120px);
+                    @include flexbox(space-between, center, column);
+                    margin-bottom: 20px;
+                }
+            }
+    
+            .home-cat{
+                margin: auto;
+            }
+        }
+    }
+}
