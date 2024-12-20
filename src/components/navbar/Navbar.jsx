@@ -19,7 +19,11 @@ const Navbar = ({ setIsAuthenticated }) => {
         }
     };
 
-    const handlePlayGame = () => {
+    const handleClothes = () => {
+        navigate('/play/clothes');
+    };
+
+    const handlePlay = () => {
         navigate('/play/game');
     };
 
@@ -45,8 +49,11 @@ const Navbar = ({ setIsAuthenticated }) => {
                         <button className="btn game-center" onClick={handleGameCenter}>
                             Pet Center
                         </button>
-                        <button className="btn play" onClick={handlePlayGame}>
-                            Play Game
+                        <button className="btn play" onClick={handlePlay}>
+                            Play
+                        </button>
+                        <button className="btn clothes" onClick={handleClothes}>
+                            Dress
                         </button>
                         <button className="btn logout" onClick={handleLogout}>
                             Log out
