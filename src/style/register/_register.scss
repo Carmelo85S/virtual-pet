@@ -90,3 +90,132 @@
         }
     }
 }
+
+@media screen and (min-width:320px) and (max-width:450px){
+    .form-wrapper {
+        .heading{
+            @include container(300px, 20px);
+            .heading-text{
+                @include logo;
+                font-size: 85px;
+            }
+        }
+    
+        .bird-chest{
+            @include container(280px, 50px);
+            padding: 0px 10px;
+
+            .chest{
+                width: 50px;
+            }
+        }
+    
+        .register-form {
+            @include container(280px, 300px);
+            padding:20px;
+            box-shadow: -10px 20px 0 #c96523;
+            
+            .input-container {
+                @include container(280px, 320px);
+    
+                .form-content {
+                    @include container(250px, 50px);
+
+                    .text{
+                        font-size: 18px;
+                    }
+                }
+    
+                input {
+                    @include container(250px, 36px);
+                }
+
+                .checkbox-container {
+                    display: flex;
+                  
+                    .checkbox {
+                        width: 20px;
+                        height: 20px;
+                        margin: 0;
+                    }
+                    
+                    .checkbox-text {
+                        font-size: 12px;
+                        text-align: center
+                    }
+                }
+            }
+
+            .sign-up-container {
+                @include container(250px, 45px);
+
+            }
+        }
+    }
+}
+
+@media screen and (min-width:451px) and (max-width:600px){
+    .form-wrapper {
+        .heading{
+            @include container(390px, 20px);
+            .heading-text{
+                @include logo;
+                font-size: 95px;
+            }
+        }
+    
+        .bird-chest{
+            @include container(390px, 50px);
+        }
+    
+        .sign-up-form {
+            @include container(390px, 300px);
+            
+            .input-container {
+                @include container(390px, 320px);
+    
+                .form-content {
+                    @include container(390px, 180px);
+                    padding:0 0 20px;
+
+                    .text{
+                        font-size: 25px;
+                        line-height: 40px
+                    }   
+                }
+    
+                input {
+                    @include container(320px, 36px);
+                    margin:20px
+                }
+
+                .checkbox-container {
+                    display: flex;
+                  
+                    .checkbox {
+                        width: 20px;
+                        height: 20px;
+                        margin: 0;
+                    }
+                    
+                    .checkbox-text {
+                        font-size: 12px;
+                    }
+                }
+
+            }
+    
+            .sign-up-container {
+                @include container(390px, 70px);
+    
+                .sign-up {
+                    @include form-button;
+                    max-width: 390px;
+                    min-height: 55px;
+                    width: 100%;
+                    font-size: 40px;
+                }
+            }
+        }
+    }
+}
