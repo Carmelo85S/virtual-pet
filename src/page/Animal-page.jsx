@@ -71,6 +71,11 @@ const AnimalPage = ({points}) => {
     navigate('/play/drink');
   };
 
+    // dress page navigation
+    const handleDress = () => {
+      navigate('/play/clothes');
+    };
+
   const restartGame = () => {
     setHunger(75);
     setThirst(75);
@@ -123,9 +128,9 @@ const AnimalPage = ({points}) => {
 
       <section className="animal-page-btn">
         <button className="btn-game" onClick={handleFood}>Feed</button>
-        <button className="btn-game" onClick={handlePlay}>Play</button>
-        <button className="btn-game">Store</button>
         <button className="btn-game" onClick={handleHydrate}>Hydrate</button>
+        <button className="btn-game" onClick={handleDress}>Dress</button>
+        <button className="btn-game">Skin</button>
       </section>
     </section>
   );
