@@ -23,7 +23,7 @@ header {
         }
 
         .nav-btn {
-            @include container(800px, 70px);
+            @include container(600px, 70px);
             @include flexbox(space-between, center);
 
             .btn {

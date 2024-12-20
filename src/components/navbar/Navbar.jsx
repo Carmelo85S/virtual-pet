@@ -19,10 +19,6 @@ const Navbar = ({ setIsAuthenticated }) => {
         }
     };
 
-    const handleClothes = () => {
-        navigate('/play/clothes');
-    };
-
     const handlePlay = () => {
         navigate('/play/game');
     };
@@ -51,9 +47,6 @@ const Navbar = ({ setIsAuthenticated }) => {
                         </button>
                         <button className="btn play" onClick={handlePlay}>
                             Play
-                        </button>
-                        <button className="btn clothes" onClick={handleClothes}>
-                            Dress
                         </button>
                         <button className="btn logout" onClick={handleLogout}>
                             Log out
