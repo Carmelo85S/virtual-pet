@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import '../../src/style/shop/shop.css';
 import {
   Beer,
   Wine
 } from "../assets/form/food-drinks.js"
 const DrinkStore = ({points, setPoints}) => {
+  const navigate = useNavigate(); 
 
   const foodItems = [
     {
@@ -27,31 +28,37 @@ const DrinkStore = ({points, setPoints}) => {
   const handleBuy = (cost) => {
     if (points >= cost) {
       setPoints(points - cost);
+      return true; 
     } else {
       alert("Sorry, you do not have enough points!");
+      return false; 
     }
   };
 
   return (
-<div className="mainContainer">
-  {foodItems.map((food) => (
-    <div key={food.id} className="foodItem">
-      <div className="foodDetails">
-        <h3>{food.name}</h3>
-        <p>{food.description}</p>
-        <p>Cost: {food.cost} points</p>
-        <button
-          onClick={() => handleBuy(food.cost)}
-          disabled={points < food.cost}
-        >
-          Buy
-        </button>
-      </div>
-      <img src={food.img} alt={food.name} className="foodImage" />
+    <div className="mainContainer">
+      {foodItems.map((food) => (
+        <div key={food.id} className="foodItem">
+          <div className="foodDetails">
+            <h3>{food.name}</h3>
+            <p>{food.description}</p>
+            <p>Cost: {food.cost} points</p>
+            <button
+              onClick={() => {
+                const success = handleBuy(food.cost);
+                if (success) {
+                  navigate('/play');
+                }
+              }}
+              disabled={points < food.cost}
+            >
+              Buy
+            </button>
+          </div>
+          <img src={food.img} alt={food.name} className="foodImage" />
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-
   );
 };
 
