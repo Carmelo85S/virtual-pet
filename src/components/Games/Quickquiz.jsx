@@ -82,6 +82,7 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
   const [score, setScore] = useState(0); // User's score
   const [timer, setTimer] = useState(10); // Timer for each question
   const [lives, setLives] = useState(3); // Game lives
+  const [questions, setQuestions] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false); // Game over state
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false); // Flag to prevent multiple submissions
 
@@ -101,7 +102,13 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
     if (option === correctAnswer) {
       setFeedback("Correct! 🎉");
       onPointsEarned(10); // Earn points for correct answer
+      setQuestions((prevQuestions) => prevQuestions +1);
 
+      //if questions === 10 game over
+      if(questions + 1 === 10){
+        setIsGameOver(true);
+        setFeedback("Well done! You answered all questions!");
+      }
       // Update points globally
       setPoints((prevPoints) => prevPoints + 10);
       setPlayerPoints(prevPlayerPoints => prevPlayerPoints + 10);
@@ -162,6 +169,9 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
             </div>
             <div className="quiz-game-lives">
               Lives: {lives} / 3 {/* Display remaining life */}
+            </div>
+            <div className="quiz-game-lives">
+              Questions: {questions} / 10 {/* Display remaining questions */}
             </div>
           </div>
           <div className="quiz-question-container">
