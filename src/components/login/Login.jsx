@@ -41,7 +41,6 @@ const Login = ({ setIsAuthenticated }) => {
     }
   };
   
-  
   return (
     <div className="form-wrapper">
       <section className="heading">
