@@ -40,12 +40,10 @@
   font-family: "Micro 5", sans-serif;
   color: #333;
   margin-bottom: 20px;
-  font-size: 26px;
+  font-size: 40px;
 }
 
 .math-game-score {
-  font-family: "Micro 5", sans-serif;
-  font-size: 24px;
   color: #4caf50;
   margin-bottom: 15px;
   font-weight: bold;
@@ -54,9 +52,16 @@
 /*----- New ellipse and math -----*/
 
 .math-game-item-image {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   margin: 0 5px;
+}
+
+.math-game-question {
+  font-family: "Micro 5", sans-serif;
+  font-size: 45px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .math-game-answer-options {
@@ -106,6 +111,8 @@
 }
 
 .math-game-stats > div {
+  font-family: "Micro 5", sans-serif;
+  font-size: 35px;
   padding: 0 15px;
   min-width: 150px;
 }
@@ -135,7 +142,7 @@
 }
 
 .math-game-over p {
-  font-size: 24px;
+  font-size: 30px;
   margin: 10px 0;
   color: #4caf50;
 }

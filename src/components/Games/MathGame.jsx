@@ -8,45 +8,26 @@ import {
   EllipseRed,
 } from "../../assets/form/math-items.js";
 
-const MathGame = ({ onPointsEarned }) => {
+const MathGame = ({ onPointsEarned, points, setPoints }) => {
   /*----- Stores the current question object, containing the question text and answer details. -----*/
-
   const [question, setQuestion] = useState({});
-
   /*----- Stores the user's currently selected answer. Initialized to "null" to indicate no selection. -----*/
-
   const [selectedAnswer, setSelectedAnswer] = useState("null");
-
   /*----- Stores feedback message to display to the user after they answer a question. -----*/
-
   const [feedback, setFeedback] = useState("");
-
   /*----- Stores the user's current score. -----*/
-
   const [score, setScore] = useState(0);
-
   /*----- Stores the number of lives the user has remaining. -----*/
-
   const [lives, setLives] = useState(3);
-
   /*----- Stores the number of questions the user has answered. -----*/
-
   const [questionCount, setQuestionCount] = useState(0);
-
   /*----- Stores the remaining time for the current question. -----*/
-
   const [timeLeft, setTimeLeft] = useState(10);
-
   /*----- Stores the game over state, true if the game is over, false otherwise. -----*/
-
   const [gameOver, setGameOver] = useState(false);
-
   /*----- Stores the previous question object, useful for preventing duplicate questions. -----*/
-
   const [previousQuestion, setPreviousQuestion] = useState(null);
-
   /*----- Stores the array of answer options for the current question. -----*/
-
   const [answerOptions, setAnswerOptions] = useState([]);
 
   /*----- Generates a new question with random quantities of two items, ensuring the correct answer is different from the previous question. -----*/
@@ -74,7 +55,6 @@ const MathGame = ({ onPointsEarned }) => {
     setSelectedAnswer(null);
     setFeedback("");
     generateAnswerOptions(newQuestion.correctAnswer);
-    /* setAnswer(""); */
   };
 
   /*----- Generates an array of 3 unique answer options, including the correct answer, and shuffles them. -----*/
@@ -95,13 +75,22 @@ const MathGame = ({ onPointsEarned }) => {
     setSelectedAnswer(selected);
     if (selected === question.correctAnswer) {
       const earnedPoints = 10; // Points earned
+
       setScore((prevScore) => prevScore + earnedPoints);
 
       /*----- Update points after correct answer -----*/
 
-      if (onPointsEarned) {
-        onPointsEarned(earnedPoints); // Pass the updated points value
-      }
+      setPoints((prevPoints) => {
+        const updatedPoints = prevPoints + earnedPoints;
+
+        /*----- Pass the updated points to the parent component -----*/
+
+        if (onPointsEarned) {
+          onPointsEarned(updatedPoints);
+        }
+
+        return updatedPoints;
+      });
 
       setFeedback("Correct! 🎉");
       setQuestionCount((prevCount) => prevCount + 1);

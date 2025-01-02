@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import '../../src/style/shop/shop.css';
+import { useNavigate } from "react-router-dom";
+import "../../src/style/shop/shop.css";
 import {
   CheeseBurger,
   Cookie,
   IceCream,
-  Taco
+  Taco,
 } from "../assets/form/food-drinks";
 
 const FoodStore = ({ points, setPoints }) => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const foodItems = [
     {
@@ -44,10 +44,10 @@ const FoodStore = ({ points, setPoints }) => {
   const handleBuy = (cost) => {
     if (points >= cost) {
       setPoints(points - cost);
-      return true; 
+      return true;
     } else {
       alert("Sorry, you do not have enough points!");
-      return false; 
+      return false;
     }
   };
 
@@ -63,7 +63,7 @@ const FoodStore = ({ points, setPoints }) => {
               onClick={() => {
                 const success = handleBuy(food.cost);
                 if (success) {
-                  navigate('/play');
+                  navigate("/play");
                 }
               }}
               disabled={points < food.cost}
