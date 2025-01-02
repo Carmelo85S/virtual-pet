@@ -1,11 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import '../../src/style/shop/shop.css';
-import {
-  Beer,
-  Wine
-} from "../assets/form/food-drinks.js"
-const DrinkStore = ({points, setPoints}) => {
-  const navigate = useNavigate(); 
+import { useNavigate } from "react-router-dom";
+import "../../src/style/shop/shop.css";
+import { Beer, Wine } from "../assets/form/food-drinks.js";
+const DrinkStore = ({ points, setPoints }) => {
+  const navigate = useNavigate();
 
   const foodItems = [
     {
@@ -22,16 +19,15 @@ const DrinkStore = ({points, setPoints}) => {
       cost: 20,
       img: Wine,
     },
-
   ];
 
   const handleBuy = (cost) => {
     if (points >= cost) {
       setPoints(points - cost);
-      return true; 
+      return true;
     } else {
       alert("Sorry, you do not have enough points!");
-      return false; 
+      return false;
     }
   };
 
@@ -47,7 +43,7 @@ const DrinkStore = ({points, setPoints}) => {
               onClick={() => {
                 const success = handleBuy(food.cost);
                 if (success) {
-                  navigate('/play');
+                  navigate("/play");
                 }
               }}
               disabled={points < food.cost}
