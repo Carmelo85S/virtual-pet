@@ -5,6 +5,106 @@ import Cat from '../../assets/home-cat.svg';
 const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
   const triviaQuestions = [
     {
+      question: "What color is a banana?",
+      options: ["Red", "Green", "Yellow", "Blue"],
+      correct: "Yellow",
+    },
+    {
+      question: "What sound does a cow make?",
+      options: ["Moo", "Baa", "Woof", "Meow"],
+      correct: "Moo",
+    },
+    {
+      question: "How many days are there in a week?",
+      options: ["5", "6", "7", "8"],
+      correct: "7",
+    },
+    {
+      question: "What is 2 + 2?",
+      options: ["3", "4", "5", "6"],
+      correct: "4",
+    },
+    {
+      question: "What is the color of the sun?",
+      options: ["Yellow", "Blue", "Green", "Purple"],
+      correct: "Yellow",
+    },
+    {
+      question: "Which animal barks?",
+      options: ["Cat", "Dog", "Bird", "Fish"],
+      correct: "Dog",
+    },
+    {
+      question: "How many legs does a chicken have?",
+      options: ["2", "4", "6", "8"],
+      correct: "2",
+    },
+    {
+      question: "What is the opposite of up?",
+      options: ["Down", "Left", "Right", "Back"],
+      correct: "Down",
+    },
+    {
+      question: "What do you drink that comes from a cow?",
+      options: ["Milk", "Juice", "Water", "Soda"],
+      correct: "Milk",
+    },
+    {
+      question: "What shape is a wheel?",
+      options: ["Square", "Circle", "Triangle", "Rectangle"],
+      correct: "Circle",
+    },
+    {
+      question: "What is the name of the frozen water?",
+      options: ["Ice", "Snow", "Rain", "Hail"],
+      correct: "Ice",
+    },
+    {
+      question: "Which animal lives in water and has gills?",
+      options: ["Fish", "Bird", "Elephant", "Lion"],
+      correct: "Fish",
+    },
+    {
+      question: "What color are strawberries?",
+      options: ["Red", "Green", "Yellow", "Blue"],
+      correct: "Red",
+    },
+    {
+      question: "Which day comes after Friday?",
+      options: ["Thursday", "Saturday", "Sunday", "Monday"],
+      correct: "Saturday",
+    },
+    {
+      question: "What do you use to brush your teeth?",
+      options: ["Comb", "Toothbrush", "Spoon", "Towel"],
+      correct: "Toothbrush",
+    },
+    {
+      question: "Which fruit is red and often found in pies?",
+      options: ["Apple", "Banana", "Grape", "Peach"],
+      correct: "Apple",
+    },
+    {
+      question: "What is the name of the baby chicken?",
+      options: ["Calf", "Cub", "Chick", "Puppy"],
+      correct: "Chick",
+    },
+    {
+      question: "How many fingers do you have on one hand?",
+      options: ["3", "4", "5", "6"],
+      correct: "5",
+    },
+    {
+      question: "What color are leaves in the summer?",
+      options: ["Green", "Red", "Yellow", "Blue"],
+      correct: "Green",
+    },
+    {
+      question: "Which vehicle has wings and can fly?",
+      options: ["Car", "Bicycle", "Airplane", "Boat"],
+      correct: "Airplane",
+    },    
+    {
       question: "How many legs does a spider have?",
       options: ["6", "8", "10", "12"],
       correct: "8",
@@ -82,6 +182,7 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
   const [score, setScore] = useState(0); // User's score
   const [timer, setTimer] = useState(10); // Timer for each question
   const [lives, setLives] = useState(3); // Game lives
+  const [questions, setQuestions] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false); // Game over state
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false); // Flag to prevent multiple submissions
 
@@ -101,7 +202,13 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
     if (option === correctAnswer) {
       setFeedback("Correct! 🎉");
       onPointsEarned(10); // Earn points for correct answer
+      setQuestions((prevQuestions) => prevQuestions +1);
 
+      //if questions === 10 game over
+      if(questions + 1 === 10){
+        setIsGameOver(true);
+        setFeedback("Well done! You answered all questions!");
+      }
       // Update points globally
       setPoints((prevPoints) => prevPoints + 10);
       setPlayerPoints(prevPlayerPoints => prevPlayerPoints + 10);
@@ -162,6 +269,9 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
             </div>
             <div className="quiz-game-lives">
               Lives: {lives} / 3 {/* Display remaining life */}
+            </div>
+            <div className="quiz-game-lives">
+              Questions: {questions} / 10 {/* Display remaining questions */}
             </div>
           </div>
           <div className="quiz-question-container">

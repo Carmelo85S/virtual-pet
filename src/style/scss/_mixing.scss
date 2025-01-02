@@ -178,7 +178,30 @@
 
     }
 }
+@mixin status-button{
+    width: 40px;
+    height: 40px;
+    font-family: font.$micro-5;
+    font-size: 30px;
+    color: #424040;
+    border: 1px solid #424040;
+    background: #FFB95E;
+    box-shadow: 4px 4px 4px 0px #000;
+    cursor: pointer;
 
+    &:hover {
+        background-color: #f9a231;
+        transform: scale(1.05);
+        color:rgb(51, 51, 51);
+    }
+
+    &:active {
+        background-color: #31f942;
+        transform: scale(0.98);
+        color:rgb(51, 51, 51);
+
+    }
+}
 @mixin specification{
     color: #000;
     font-family: font.$micro-5;

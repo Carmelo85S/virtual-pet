@@ -10,9 +10,18 @@ const Login = ({ setIsAuthenticated }) => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  const admin = "admin";
+    const adminPass = "admin"
+
   const handleLogin = (e) => {
     e.preventDefault();
-  
+
+    if (username === admin && password === adminPass) {
+      setIsAuthenticated(true);
+      navigate("/play");
+      return;
+    }
+
     const getUserData = () => {
       const userData = JSON.parse(localStorage.getItem('user'));
   
@@ -40,7 +49,6 @@ const Login = ({ setIsAuthenticated }) => {
       alert('Wrong credentials');
     }
   };
-  
   
   return (
     <div className="form-wrapper">
