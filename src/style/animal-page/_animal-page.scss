@@ -5,7 +5,6 @@
 .animal-page-container{
     @include container(1147px, 641px);
     margin: auto;
-    margin-bottom: 10px;
     background-color: color.$game-center-bg;
     border: 1px solid #000;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -27,15 +26,13 @@
     }
 
     .animal-status-container{
-        @include container(970px, 380px);
+        @include container(970px, 180px);
         margin: auto;
-        margin-top:70px;
+        margin-top:10px;
         @include flexbox(space-between, flex-start, row);
-
-        .animal-img {
-            position: relative; 
-            
-            .cat-status {
+      
+        .animal-img{
+            .cat-status{
                 @include specification;
                 text-align: center;
                 margin-bottom: 20px;
@@ -45,6 +42,24 @@
                 width: 300px;
                 margin-left: 50px;
                 position: relative;
+            }
+        
+            .visible {
+                width: 100px; 
+                height: 100px; 
+                position: relative; 
+                top: -120px;
+                left: 150px;
+                transform: translate(-50%, -50%); 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10;
+            
+                img {
+                  width: 50%;
+                  height: auto;
+                }
             }
         }
         
@@ -124,6 +139,7 @@
         @include container(970px, 70px);
         @include flexbox(space-between, center);
         margin:auto;  
+        margin-bottom: 20px;
         
         .btn-game{
             @include game-button;
