@@ -3,28 +3,137 @@ import { useNavigate } from 'react-router-dom';
 import GameOver from '../components/game-over/GameOver';
 import Star from '../assets/star.svg';
 import Cat from '../assets/home-cat.svg';
+import DeadCat from '../assets/cat_dead_05.svg';
+import SadCat from '../assets/cat_sad_03.svg';
+import LoveCat from '../assets/cat_love.svg';
+import Burger from '../assets/form/cheesburger.svg';
+import Taco from '../assets/form/taco.svg';
+import IceCream from '../assets/form/icecream.svg';
+import Cookie from '../assets/form/cookie.svg';
+import Beer from '../assets/form/beer.svg';
+import Wine from '../assets/form/wine.svg';
 import '../style/animal-page/animal-page.css';
 
-const AnimalPage = ({points}) => {
-  const [hunger, setHunger] = useState(50);
-  const [thirst, setThirst] = useState(90);
+const AnimalPage = ({points, 
+  burger, setBurger,
+  taco, setTaco, 
+  iceCream, setIceCream, 
+  cookie, setCookie, 
+  beer, setBeer, 
+  wine, setWine }) => {
+  const [hunger, setHunger] = useState(20);
+  const [thirst, setThirst] = useState(20);
   const [isGameOver, setIsGameOver] = useState(false);
 
   const navigate = useNavigate();
 
-  // Hydrate animal
-  const hydrateAnimal = () => {
-    if (thirst < 100) {
-      setThirst(thirst + 10);
+  // use burger
+  const useBurger = () => {
+
+    if (hunger < 100 && burger > 0) {
+      setHunger(hunger + 10); 
+      setBurger((prevBurger) => prevBurger - 1);
+    } else if (burger <= 0) {
+      alert("No burgers left!");
     } else {
-      alert("Not thirsty");
+      alert("Not hungry");
     }
 
-    // If thirst reaches 0, end the game
-    if (thirst <= 0) {
+    // If hunger reaches 0, end the game
+    if (hunger <= 0) {
       setIsGameOver(true);
     }
   };
+
+  //use taco
+  const useTaco = () => {
+
+    if (hunger < 100 && taco > 0) {
+      setHunger(hunger + 10); 
+      setTaco((prevTaco) => prevTaco - 1);
+    } else if (taco <= 0) {
+      alert("No taco's left!");
+    } else {
+      alert("Not hungry");
+    }
+
+    // If hunger reaches 0, end the game
+    if (hunger <= 0) {
+      setIsGameOver(true);
+    }
+  };
+
+  //use ice cream
+  const useIceCream = () => {
+
+    if (hunger < 100 && iceCream > 0) {
+      setHunger(hunger + 10); 
+      setIceCream((prevIceCream) => prevIceCream - 1);
+    } else if (taco <= 0) {
+      alert("No ice cream's left!");
+    } else {
+      alert("Not hungry");
+    }
+
+    // If hunger reaches 0, end the game
+    if (hunger <= 0) {
+      setIsGameOver(true);
+    }
+  };
+
+    //use cookie
+    const useCookie = () => {
+
+      if (hunger < 100 && cookie > 0) {
+        setHunger(hunger + 10); 
+        setCookie((prevCookie) => prevCookie - 1);
+      } else if (cookie <= 0) {
+        alert("No ice cookie's left!");
+      } else {
+        alert("Not hungry");
+      }
+  
+      // If hunger reaches 0, end the game
+      if (hunger <= 0) {
+        setIsGameOver(true);
+      }
+    };
+
+    //use beer
+    const useBeer = () => {
+
+      if (thirst < 100 && beer > 0) {
+        setThirst(thirst + 10); 
+        setBeer((prevBeer) => prevBeer - 1);
+      } else if (beer <= 0) {
+        alert("No beer's left!");
+      } else {
+        alert("Not thirsty");
+      }
+  
+      // If thirst reaches 0, end the game
+      if (thirst <= 0) {
+        setIsGameOver(true);
+      }
+    };
+
+    //use wine
+    const useWine = () => {
+
+      if (thirst < 100 && wine > 0) {
+        setThirst(thirst + 10); 
+        setWine((prevWine) => prevWine - 1);
+      } else if (wine <= 0) {
+        alert("No wine's left!");
+      } else {
+        alert("Not thirsty");
+      }
+  
+      // If hunger reaches 0, end the game
+      if (thirst <= 0) {
+        setIsGameOver(true);
+      }
+    };
 
   //points update in Animal Page
   useEffect(() => {
@@ -34,7 +143,7 @@ const AnimalPage = ({points}) => {
 
   // Hunger effect every 10 seconds
   useEffect(() => {
-    if (hunger < 10) {
+    if (hunger <= 0) {
       setIsGameOver(true);
     } else {
       const hungerInterval = setInterval(() => {
@@ -46,7 +155,7 @@ const AnimalPage = ({points}) => {
 
   // Thirst effect every 10 seconds
   useEffect(() => {
-    if (thirst < 0) {
+    if (thirst <= 0) {
       setIsGameOver(true);
     } else {
       const thirstInterval = setInterval(() => {
@@ -55,11 +164,6 @@ const AnimalPage = ({points}) => {
       return () => clearInterval(thirstInterval);
     }
   }, [thirst]);
-
-  // Play game
-  const handlePlay = () => {
-    navigate('/play/game');
-  };
 
   // Feed page navigation
   const handleFood = () => {
@@ -77,8 +181,14 @@ const AnimalPage = ({points}) => {
     };
 
   const restartGame = () => {
-    setHunger(75);
-    setThirst(75);
+    setHunger(30);
+    setThirst(30);
+    setBurger(3);
+    setCookie(3);
+    setIceCream(4);
+    setTaco(4);
+    setBeer(4);
+    setWine(4);
     setIsGameOver(false);
   };
 
@@ -93,7 +203,27 @@ const AnimalPage = ({points}) => {
 
       <section className="animal-status-container">
         <section className="animal-img">
-          <img src={Cat} alt="cute cat" />
+          {hunger === 0 || thirst === 0 ? (
+            <div>
+              <h2 className="cat-status">Dead</h2>
+              <img src={DeadCat} alt="dead cat" />
+            </div>
+          ) : hunger < 20 || thirst < 20 ? (
+            <div>
+              <h2 className="cat-status">I'm sad</h2>
+              <img src={SadCat} alt="sad cat" />
+            </div>
+          ) : hunger > 80 && thirst > 80 ? (
+            <div>
+              <h2 className="cat-status">I'm super happy</h2>
+              <img src={LoveCat} alt="love cat" />
+            </div>
+          ) : (
+            <div>
+              <h2 className="cat-status">I'm waiting</h2>
+              <img src={Cat} alt="cute cat" />
+            </div>
+          )}
         </section>
 
         <section className="animal-status">
@@ -122,6 +252,36 @@ const AnimalPage = ({points}) => {
             <div className="bar">
               <div className="color" style={{ width: ``, backgroundColor: '#FB5D5D' }}></div>
             </div>
+          </section>
+
+          <section className="img-food-container">
+            <div className="food">
+              <img className="img" src={Burger} alt="Cheese burger icon" />
+            </div>
+            <div className="food">
+              <img className="img" src={Taco} alt="Taco icon" />
+            </div>
+            <div className="food">
+              <img className="img" src={IceCream} alt="Ice cream icon" />
+            </div>
+            <div className="food">
+              <img className="img" src={Cookie} alt="Cookie icon" />
+            </div>
+            <div className="drink">
+              <img className="img" src={Beer} alt="Beer icon" />
+            </div>
+            <div className="drink">
+              <img className="img-wine" src={Wine} alt="Drink icon" />
+            </div>
+          </section>
+
+          <section className="button-food-container">
+          <button className="food-btn" onClick={useBurger}>{burger}</button>
+          <button className="food-btn" onClick={useTaco}>{taco}</button>
+          <button className="food-btn" onClick={useIceCream}>{iceCream}</button>
+          <button className="food-btn" onClick={useCookie}>{cookie}</button>
+          <button className="drink-btn" onClick={useBeer}>{beer}</button>
+          <button className="drink-btn" onClick={useWine}>{wine}</button>
           </section>
         </section>
       </section>
