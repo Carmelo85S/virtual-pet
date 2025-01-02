@@ -13,11 +13,17 @@ import ClothStore from './page/Clothes';
 import './app.css';
 import React from 'react';
 import JamendoTracks from './components/music/music';
- 
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [points, setPoints] = useState(100);
+
+    const [burger, setBurger] = useState(5);
+    const [taco, setTaco] = useState(5);
+    const [iceCream, setIceCream] = useState(5);
+    const [cookie, setCookie] = useState(5);
+    const [wine, setWine] = useState(5);
+    const [beer, setBeer] = useState(5);
 
     useEffect(() => {
       const userData = JSON.parse(localStorage.getItem('user'));
@@ -39,14 +45,22 @@ const App = () => {
         <Route path="/play" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <AnimalPage points={points} setPoints={setPoints} />
+            <AnimalPage 
+              points={points} setPoints={setPoints}
+              burger={burger} setBurger={setBurger}
+              taco={taco} setTaco={setTaco}
+              iceCream={iceCream} setIceCream={setIceCream}
+              cookie={cookie} setCookie={setCookie}
+              wine={wine} setWine={setWine}
+              beer={beer} setBeer={setBeer} />
           </PrivateRoute>
         }/>
 
           <Route path="/play/game" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <VirtualPetGame points={points} setPoints={setPoints}/>
+            <VirtualPetGame points={points} setPoints={setPoints}
+            />
           </PrivateRoute>
         }/>
 

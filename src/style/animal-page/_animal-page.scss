@@ -32,6 +32,13 @@
         @include flexbox(space-between, flex-start, row);
 
         .animal-img{
+
+            .cat-status{
+                @include specification;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
             img{
                 width: 300px;
                 margin-left: 50px;
@@ -40,7 +47,7 @@
         
         .animal-status{
             @include flexbox(space-between, center, column);
-            @include container(430px, 50px);
+            @include container(430px, 350px);
 
             .needs{
                 @include container(450px, 60px);
@@ -71,6 +78,40 @@
                     height: 100%;
                     transition: width 0.3s ease-in-out; /* Aggiungi una transizione per l'animazione */
                   }
+                }
+            }
+
+            .img-food-container{
+                @include container(430px, 50px);
+                @include flexbox(space-around, center, row);
+                margin-top:20px;
+                
+                .food,
+                .drink{
+                    max-width: 150px;
+                    min-height: auto;
+                    width: 100%;
+                    @include flexbox(center, center, column);
+        
+                    .img{
+                        width: 45px;
+                    }
+
+                    .img-wine{
+                        width:35px;
+                    }
+                }
+            }
+
+            .button-food-container{
+                @include container(430px, 50px);
+                @include flexbox(space-around, center, row);
+                margin-bottom: 20px;
+
+                .food-btn,
+                .drink-btn{
+                    @include flexbox(center, center, column);
+                    @include status-button;
                 }
             }
         }
