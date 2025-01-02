@@ -24,6 +24,7 @@ const AnimalPage = ({points,
   const [hunger, setHunger] = useState(20);
   const [thirst, setThirst] = useState(20);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [visible, setVisible] = useState(null);
 
   const navigate = useNavigate();
 
@@ -32,6 +33,8 @@ const AnimalPage = ({points,
 
     if (hunger < 100 && burger > 0) {
       setHunger(hunger + 10); 
+      setVisible(Burger);
+      setTimeout(() => setVisible(null), 2000);
       setBurger((prevBurger) => prevBurger - 1);
     } else if (burger <= 0) {
       alert("No burgers left!");
@@ -50,9 +53,11 @@ const AnimalPage = ({points,
 
     if (hunger < 100 && taco > 0) {
       setHunger(hunger + 10); 
+      setVisible(Taco);
+      setTimeout(() => setVisible(null), 2000);
       setTaco((prevTaco) => prevTaco - 1);
     } else if (taco <= 0) {
-      alert("No taco's left!");
+      alert("No tacos left!");
     } else {
       alert("Not hungry");
     }
@@ -68,9 +73,11 @@ const AnimalPage = ({points,
 
     if (hunger < 100 && iceCream > 0) {
       setHunger(hunger + 10); 
+      setVisible(IceCream);
+      setTimeout(() => setVisible(null), 2000);
       setIceCream((prevIceCream) => prevIceCream - 1);
-    } else if (taco <= 0) {
-      alert("No ice cream's left!");
+    } else if (iceCream <= 0) {
+      alert("No ice creams left!");
     } else {
       alert("Not hungry");
     }
@@ -82,66 +89,66 @@ const AnimalPage = ({points,
   };
 
     //use cookie
-    const useCookie = () => {
+  const useCookie = () => {
 
-      if (hunger < 100 && cookie > 0) {
-        setHunger(hunger + 10); 
-        setCookie((prevCookie) => prevCookie - 1);
-      } else if (cookie <= 0) {
-        alert("No ice cookie's left!");
-      } else {
+    if (hunger < 100 && cookie > 0) {
+      setHunger(hunger + 10); 
+      setVisible(Cookie);
+      setTimeout(() => setVisible(null), 2000);
+      setCookie((prevCookie) => prevCookie - 1);
+    } else if (cookie <= 0) {
+        alert("No ice cookies left!");
+    } else {
         alert("Not hungry");
-      }
+    }
   
-      // If hunger reaches 0, end the game
-      if (hunger <= 0) {
-        setIsGameOver(true);
-      }
-    };
+    // If hunger reaches 0, end the game
+    if (hunger <= 0) {
+      setIsGameOver(true);
+    }
+  };
 
-    //use beer
-    const useBeer = () => {
+  //use beer
+  const useBeer = () => {
 
-      if (thirst < 100 && beer > 0) {
-        setThirst(thirst + 10); 
-        setBeer((prevBeer) => prevBeer - 1);
-      } else if (beer <= 0) {
-        alert("No beer's left!");
-      } else {
-        alert("Not thirsty");
-      }
+    if (thirst < 100 && beer > 0) {
+      setThirst(thirst + 10); 
+      setVisible(Beer);
+      setTimeout(() => setVisible(null), 2000);
+      setBeer((prevBeer) => prevBeer - 1);
+    } else if (beer <= 0) {
+      alert("No beers left!");
+    } else {
+      alert("Not thirsty");
+    }
   
-      // If thirst reaches 0, end the game
-      if (thirst <= 0) {
-        setIsGameOver(true);
-      }
-    };
+    // If thirst reaches 0, end the game
+    if (thirst <= 0) {
+      setIsGameOver(true);
+    }
+  };
 
-    //use wine
-    const useWine = () => {
+  //use wine
+  const useWine = () => {
 
-      if (thirst < 100 && wine > 0) {
-        setThirst(thirst + 10); 
-        setWine((prevWine) => prevWine - 1);
-      } else if (wine <= 0) {
-        alert("No wine's left!");
-      } else {
-        alert("Not thirsty");
-      }
+    if (thirst < 100 && wine > 0) {
+      setThirst(thirst + 10); 
+      setVisible(Wine);
+      setTimeout(() => setVisible(null), 2000);
+      setWine((prevWine) => prevWine - 1);
+    } else if (wine <= 0) {
+      alert("No wines left!");
+    } else {
+      alert("Not thirsty");
+    }
   
-      // If hunger reaches 0, end the game
-      if (thirst <= 0) {
-        setIsGameOver(true);
-      }
-    };
+    // If hunger reaches 0, end the game
+    if (thirst <= 0) {
+      setIsGameOver(true);
+    }
+  };
 
-  //points update in Animal Page
-  useEffect(() => {
-    console.log("Points updated in AnimalPage:", points);
-  }, [points]);
-  
-
-  // Hunger effect every 10 seconds
+  // Hunger effect every 7.5 seconds
   useEffect(() => {
     if (hunger <= 0) {
       setIsGameOver(true);
@@ -175,10 +182,10 @@ const AnimalPage = ({points,
     navigate('/play/drink');
   };
 
-    // dress page navigation
-    const handleDress = () => {
-      navigate('/play/clothes');
-    };
+  // dress page navigation
+  const handleDress = () => {
+    navigate('/play/clothes');
+  };
 
   const restartGame = () => {
     setHunger(30);
@@ -224,6 +231,9 @@ const AnimalPage = ({points,
               <img src={Cat} alt="cute cat" />
             </div>
           )}
+          <section className="visible">
+            {visible && <img src={visible} alt="food or drink visible" />}
+          </section>
         </section>
 
         <section className="animal-status">
@@ -242,15 +252,6 @@ const AnimalPage = ({points,
             </div>
             <div className="bar">
               <div className="color" style={{ width: `${thirst}%`, backgroundColor: '#5EE270' }}></div>
-            </div>
-          </section>
-
-          <section className="needs">
-            <div className="text-container">
-              <p className="spec">Fun</p>
-            </div>
-            <div className="bar">
-              <div className="color" style={{ width: ``, backgroundColor: '#FB5D5D' }}></div>
             </div>
           </section>
 
