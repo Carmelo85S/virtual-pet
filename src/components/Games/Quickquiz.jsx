@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../style/games/QuickQuiz.css";
-import Cat from '../../assets/home-cat.svg';
+import Cat from "../../assets/home-cat.svg";
 
 const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
   const triviaQuestions = [
@@ -103,7 +103,7 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
       question: "Which vehicle has wings and can fly?",
       options: ["Car", "Bicycle", "Airplane", "Boat"],
       correct: "Airplane",
-    },    
+    },
     {
       question: "How many legs does a spider have?",
       options: ["6", "8", "10", "12"],
@@ -122,53 +122,53 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
     {
       question: "What color is the sky on a clear day?",
       options: ["Red", "Green", "Blue", "Yellow"],
-      correct: "Blue"
+      correct: "Blue",
     },
     {
       question: "What animal is known for saying 'meow'?",
       options: ["Dog", "Cat", "Cow", "Duck"],
-      correct: "Cat"
+      correct: "Cat",
     },
     {
       question: "Which fruit is yellow and is a monkey's favorite?",
       options: ["Apple", "Banana", "Grapes", "Orange"],
-      correct: "Banana"
+      correct: "Banana",
     },
     {
       question: "What do you call a baby dog?",
       options: ["Puppy", "Kitten", "Calf", "Cub"],
-      correct: "Puppy"
+      correct: "Puppy",
     },
     {
       question: "What shape has 4 equal sides?",
       options: ["Circle", "Triangle", "Square", "Rectangle"],
-      correct: "Square"
+      correct: "Square",
     },
     {
       question: "Which one of these animals can fly?",
       options: ["Lion", "Penguin", "Eagle", "Elephant"],
-      correct: "Eagle"
+      correct: "Eagle",
     },
     {
       question: "What color are most grasshoppers?",
       options: ["Red", "Green", "Blue", "Yellow"],
-      correct: "Green"
+      correct: "Green",
     },
     {
       question: "Which of these is a popular superhero with a red suit?",
       options: ["Iron Man", "Spider-Man", "Superman", "Batman"],
-      correct: "Spider-Man"
+      correct: "Spider-Man",
     },
     {
       question: "What do you call the person who helps you when you're sick?",
       options: ["Teacher", "Doctor", "Baker", "Farmer"],
-      correct: "Doctor"
+      correct: "Doctor",
     },
     {
       question: "Which animal has a long neck?",
       options: ["Elephant", "Giraffe", "Kangaroo", "Panda"],
-      correct: "Giraffe"
-    }
+      correct: "Giraffe",
+    },
   ];
 
   // Function to get a random question index
@@ -202,16 +202,16 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
     if (option === correctAnswer) {
       setFeedback("Correct! 🎉");
       onPointsEarned(10); // Earn points for correct answer
-      setQuestions((prevQuestions) => prevQuestions +1);
+      setQuestions((prevQuestions) => prevQuestions + 1);
 
       //if questions === 10 game over
-      if(questions + 1 === 10){
+      if (questions + 1 === 10) {
         setIsGameOver(true);
         setFeedback("Well done! You answered all questions!");
       }
       // Update points globally
       setPoints((prevPoints) => prevPoints + 10);
-      setPlayerPoints(prevPlayerPoints => prevPlayerPoints + 10);
+      setPlayerPoints((prevPlayerPoints) => prevPlayerPoints + 10);
     } else {
       setFeedback(`Incorrect! The correct answer was ${correctAnswer}. ❌`);
       setLives(lives - 1);
@@ -257,13 +257,10 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
     <div>
       <div className="game-frame">
         <h1 className="game-title">Let's Play!</h1>
-
         <div className="quiz-container">
           <h2 className="quiz-title">Quick Quiz Challenge</h2>
           <div className="game-status">
-            <div className="quiz-score">
-              Score: {score}
-            </div>
+            <div className="quiz-score">Score: {score}</div>
             <div className="quiz-game-timer">
               Time: {timer}s {/* Display remaining time */}
             </div>
@@ -276,7 +273,8 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
           </div>
           <div className="quiz-question-container">
             <p className="quiz-question">
-              {triviaQuestions[currentQuestion].question} {/* Display the current question */}
+              {triviaQuestions[currentQuestion].question}{" "}
+              {/* Display the current question */}
             </p>
             <div className="quiz-options">
               {/* Map over the options and display buttons */}
@@ -284,7 +282,9 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
                 <button
                   key={option}
                   onClick={() => handleAnswerSelection(option)} // Set the selected option and submit
-                  className={`quiz-option-button ${selectedOption === option ? 'selected' : ''}`} // Highlight selected option
+                  className={`quiz-option-button ${
+                    selectedOption === option ? "selected" : ""
+                  }`} // Highlight selected option
                   disabled={isAnswerSubmitted} // Disable options after answer submission
                 >
                   {option} {/* Option text */}
@@ -292,11 +292,16 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
               ))}
             </div>
           </div>
-          <p className={`quiz-feedback ${feedback.includes('Correct') ? 'correct' : 'incorrect'}`}>
+          <p
+            className={`quiz-feedback ${
+              feedback.includes("Correct") ? "correct" : "incorrect"
+            }`}
+          >
             {feedback} {/* Display feedback */}
           </p>
         </div>
-        <img src={Cat} alt="cute pixel cat" className="game-cat" /> {/* Display cat image */}
+        <img src={Cat} alt="cute pixel cat" className="game-cat" />{" "}
+        {/* Display cat image */}
       </div>
     </div>
   );
