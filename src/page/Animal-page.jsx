@@ -291,7 +291,7 @@ const AnimalPage = ({points,
         <button className="btn-game" onClick={handleFood}>Feed</button>
         <button className="btn-game" onClick={handleHydrate}>Hydrate</button>
         <button className="btn-game" onClick={handleDress}>Dress</button>
-        <button className="btn-game">Skin</button>
+        {/*<button className="btn-game">Skin</button>*/}
       </section>
     </section>
   );
