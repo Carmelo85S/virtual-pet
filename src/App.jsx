@@ -67,7 +67,12 @@ const App = () => {
         <Route path="/play/food" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <FoodStore points={points} setPoints={setPoints}/>
+            <FoodStore 
+            points={points} setPoints={setPoints}
+            burger={burger} setBurger={setBurger}
+            taco={taco} setTaco={setTaco}
+            iceCream={iceCream} setIceCream={setIceCream}
+            cookie={cookie} setCookie={setCookie}/>
           </PrivateRoute>
         }/>
 
@@ -81,7 +86,9 @@ const App = () => {
         <Route path="/play/drink" element={
           <PrivateRoute isAuthenticated={isAuthenticated}>
             <Navbar setIsAuthenticated={setIsAuthenticated}/>
-            <DrinkStore points={points} setPoints={setPoints}/>
+            <DrinkStore points={points} setPoints={setPoints}
+            wine={wine} setWine={setWine}
+            beer={beer} setBeer={setBeer}/>
           </PrivateRoute>
         }/>
       </Routes>
