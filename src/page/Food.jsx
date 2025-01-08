@@ -7,7 +7,12 @@ import {
   Taco,
 } from "../assets/form/food-drinks";
 
-const FoodStore = ({ points, setPoints }) => {
+const FoodStore = ({
+  points, setPoints, 
+  burger, setBurger,
+  taco, setTaco, 
+  iceCream, setIceCream, 
+  cookie, setCookie,  }) => {
   const navigate = useNavigate();
 
   const foodItems = [
@@ -17,6 +22,7 @@ const FoodStore = ({ points, setPoints }) => {
       description: "Mmmmhmm a warm, soft cookie.",
       cost: 5,
       img: Cookie,
+      onBuy: () => setCookie((prevCookie) => prevCookie + 1),
     },
     {
       id: 2,
@@ -24,6 +30,7 @@ const FoodStore = ({ points, setPoints }) => {
       description: "Crisp tortilla with yummy stuffing.",
       cost: 10,
       img: Taco,
+      onBuy: () => setTaco((prevTaco) => prevTaco + 1),
     },
     {
       id: 3,
@@ -31,6 +38,7 @@ const FoodStore = ({ points, setPoints }) => {
       description: "yummy burger for your furry friend!",
       cost: 15,
       img: CheeseBurger,
+      onBuy: () => setBurger((prevBurger) => prevBurger + 1),
     },
     {
       id: 4,
@@ -38,12 +46,14 @@ const FoodStore = ({ points, setPoints }) => {
       description: "Strawberry ice cream for those warm days. ",
       cost: 5,
       img: IceCream,
+      onBuy: () => setIceCream((prevIceCream) => prevIceCream + 1),
     },
   ];
 
-  const handleBuy = (cost) => {
+  const handleBuy = (cost, onBuy) => {
     if (points >= cost) {
       setPoints(points - cost);
+      onBuy();
       return true;
     } else {
       alert("Sorry, you do not have enough points!");
@@ -61,7 +71,7 @@ const FoodStore = ({ points, setPoints }) => {
             <p>Cost: {food.cost} points</p>
             <button
               onClick={() => {
-                const success = handleBuy(food.cost);
+                const success = handleBuy(food.cost, food.onBuy);
                 if (success) {
                   navigate("/play");
                 }

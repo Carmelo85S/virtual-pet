@@ -128,7 +128,6 @@
             
             .input-container {
                 @include container(280px, 320px);
-                border:1px solid black;
     
                 .form-content {
                     @include container(250px, 180px);
