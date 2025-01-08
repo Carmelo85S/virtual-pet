@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
 import GameOver from '../components/game-over/GameOver';
 import Star from '../assets/star.svg';
 import Cat from '../assets/maincat.svg';
+import Poop from '../assets/poop.svg';
+import Fart from'../assets/audio/fart.mp3';
 import DeadCat from '../assets/cat_dead_05.svg';
 import SadCat from '../assets/sadcat.svg';
 import LoveCat from '../assets/cat_love.svg';
@@ -14,7 +17,7 @@ import Beer from '../assets/form/beer.svg';
 import Wine from '../assets/form/wine.svg';
 import '../style/animal-page/animal-page.css';
 
-const AnimalPage = ({points, 
+const AnimalPage = ({points, setPoints,
   burger, setBurger,
   taco, setTaco, 
   iceCream, setIceCream, 
@@ -25,6 +28,10 @@ const AnimalPage = ({points,
   const [thirst, setThirst] = useState(20);
   const [isGameOver, setIsGameOver] = useState(false);
   const [visible, setVisible] = useState(null);
+
+  const [playFartSound] = useSound(Fart);
+
+  const [poopVisible, setPoopVisible] = useState(null);
 
   const navigate = useNavigate();
 
@@ -148,29 +155,48 @@ const AnimalPage = ({points,
     }
   };
 
-  // Hunger effect every 7.5 seconds
+  // Hunger effect every 7.5 seconds amd Thirst every 10 seconds
   useEffect(() => {
-    if (hunger <= 0) {
+    if (hunger <= 0 || thirst <= 0) {
       setIsGameOver(true);
     } else {
-      const hungerInterval = setInterval(() => {
-        setHunger((prevHunger) => prevHunger - 10);
-      }, 7500);
-      return () => clearInterval(hungerInterval);
+      const hungerInterval = setInterval(() => { setHunger((prevHunger) => prevHunger - 10)}, 7500);
+      const thirstInterval = setInterval(() => { setThirst((prevThirst) => prevThirst - 10)}, 10000);
+      return () => {
+        clearInterval(hungerInterval);
+        clearInterval(thirstInterval);
+      };
     }
-  }, [hunger]);
+  }, [hunger, thirst]);
 
-  // Thirst effect every 10 seconds
-  useEffect(() => {
-    if (thirst <= 0) {
-      setIsGameOver(true);
-    } else {
-      const thirstInterval = setInterval(() => {
-        setThirst((prevThirst) => prevThirst - 10);
+    //Poop every 60 seconds
+    useEffect(() => {
+      const poopInterval = setInterval(() => {
+        setPoopVisible((currentPoop) => currentPoop || Poop);
       }, 10000);
-      return () => clearInterval(thirstInterval);
-    }
-  }, [thirst]);
+    
+      const fartInterval = setInterval(() => {
+        playFartSound();
+      }, 10000);
+    
+      return () => {
+        clearInterval(poopInterval);
+        clearInterval(fartInterval);
+      };
+    }, [playFartSound]);
+    
+
+      
+  
+    //Poop cleaned
+  
+    const cleanPoop = () => {
+      if (poopVisible) {
+        setPoopVisible(null);
+        setPoints((prevPoints) => prevPoints + 10);
+      }
+    };
+    
 
   // Feed page navigation
   const handleFood = () => {
@@ -188,8 +214,8 @@ const AnimalPage = ({points,
   };
 
   const restartGame = () => {
-    setHunger(30);
-    setThirst(30);
+    setHunger(50);
+    setThirst(50);
     setBurger(3);
     setCookie(3);
     setIceCream(4);
@@ -197,6 +223,8 @@ const AnimalPage = ({points,
     setBeer(4);
     setWine(4);
     setIsGameOver(false);
+    setPoopVisible(null);
+    setPoints(50);
   };
 
   return (
@@ -233,6 +261,13 @@ const AnimalPage = ({points,
           )}
           <section className="visible">
             {visible && <img src={visible} alt="food or drink visible" />}
+          </section>
+          <section className="poop-visible">
+            {poopVisible && (
+              <button className="poopBtn" onClick={cleanPoop}>
+                <img src={poopVisible} alt="poop" />
+              </button>
+            )}
           </section>
         </section>
 
