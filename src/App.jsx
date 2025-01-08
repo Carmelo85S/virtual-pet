@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Home from './page/Home';
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
@@ -33,7 +33,7 @@ const App = () => {
     }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
     {/* music */}
     <JamendoTracks />
       <Routes>
@@ -92,7 +92,7 @@ const App = () => {
           </PrivateRoute>
         }/>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
