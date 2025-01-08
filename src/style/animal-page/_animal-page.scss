@@ -61,6 +61,25 @@
                   height: auto;
                 }
             }
+
+            .poop-visible {
+                width: 50px;
+                position:absolute;
+
+                .poopBtn{
+                    width: 50px;
+                    position:relative;
+                    top:-200px;
+                    left: 350px;
+                    background-color: inherit;
+                    border: none;
+                    cursor: pointer;
+
+                    img{
+                        width: 50px;
+                    }
+                }
+            }
         }
         
         .animal-status{
