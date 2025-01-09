@@ -4,7 +4,7 @@ import useSound from 'use-sound';
 import GameOver from '../components/game-over/GameOver';
 import Star from '../assets/star.svg';
 import Cat from '../assets/maincat.svg';
-import Poop from '../assets/poop.svg';
+import Poop from '../assets/poopstink.svg';
 import Fart from'../assets/audio/fart.mp3';
 import DeadCat from '../assets/cat_dead_05.svg';
 import SadCat from '../assets/sadcat.svg';
