@@ -25,8 +25,8 @@ const AnimalPage = ({
   cookie, setCookie, 
   beer, setBeer, 
   wine, setWine }) => {
-    const [hunger, setHunger] = useState(20);
-    const [thirst, setThirst] = useState(20);
+    const [hunger, setHunger] = useState(50);
+    const [thirst, setThirst] = useState(50);
     const [isGameOver, setIsGameOver] = useState(false);
     const [visible, setVisible] = useState(null);
     const [playFartSound] = useSound(Fart);
@@ -82,18 +82,32 @@ const useWine = () => {
 };
 
 
+// Hunger Decrement
 useEffect(() => {
-  if (hunger <= 0 || thirst <= 0) {
+  if (hunger <= 0) {
     setIsGameOver(true);
   } else {
-    const hungerInterval = setInterval(() => { setHunger((prevHunger) => prevHunger - 10)}, 7500);
-    const thirstInterval = setInterval(() => { setThirst((prevThirst) => prevThirst - 10)}, 10000);
-    return () => {
-      clearInterval(hungerInterval);
-      clearInterval(thirstInterval);
-    };
+    const hungerInterval = setInterval(() => {
+      setHunger((prevHunger) => Math.max(prevHunger - 10, 0)); // Evita valori negativi
+    }, 7500);
+
+    return () => clearInterval(hungerInterval);
   }
-}, [hunger, thirst]);
+}, [hunger]);
+
+// Thirst Decrement
+useEffect(() => {
+  if (thirst <= 0) {
+    setIsGameOver(true);
+  } else {
+    const thirstInterval = setInterval(() => {
+      setThirst((prevThirst) => Math.max(prevThirst - 10, 0)); // Evita valori negativi
+    }, 10000);
+
+    return () => clearInterval(thirstInterval);
+  }
+}, [thirst]);
+
 
 //Poop every and fart 10 seconds
 
