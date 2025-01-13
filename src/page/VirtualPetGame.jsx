@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MathGame from "../components/Games/MathGame";
 import QuickQuiz from "../components/Games/Quickquiz";
-import "../style/Games/VirtualPetGame.css";
+import "../style/Games/virtualPetGame.css";
 import Cat from "../assets/home-cat.svg";
 
 const VirtualPetGame = ({ points, setPoints }) => {
@@ -40,20 +40,20 @@ const VirtualPetGame = ({ points, setPoints }) => {
   return (
     <div>
       {selectedGame ? (
-        <div>
+        <section className="back-button-container">
           <button onClick={() => setSelectedGame(null)} className="back-button">
             Back to Games
           </button>
           {renderSelectedGame()}
-        </div>
+        </section>
       ) : (
         <div className="game-frame">
           <div className="virtual-pet-game">
             <h1 className="game-title">Game Center</h1>
             <p>Total Points: {playerPoints}</p>
-            <div className="game-buttons">
-              <button onClick={() => setSelectedGame("math")}>Math Game</button>
-              <button onClick={() => setSelectedGame("quiz")}>
+            <div className="game-buttons-container">
+              <button className="game" onClick={() => setSelectedGame("math")}>Math Game</button>
+              <button className="game" onClick={() => setSelectedGame("quiz")}>
                 Quick Quiz
               </button>
             </div>

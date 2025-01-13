@@ -23,7 +23,7 @@ header {
         }
 
         .nav-btn {
-            @include container(600px, 70px);
+            @include container(800px, 70px);
             @include flexbox(space-between, center);
 
             .btn {
@@ -70,13 +70,13 @@ header {
                 }
             }
 
-            .clothes {
+            .game-info {
                 &:hover {
-                    background-color: color.$clothes-hover;
+                    background-color: color.$game-info-hover;
                 }
 
                 &:active {
-                    background-color: color.$clothes-active;
+                    background-color: color.$game-info-active;
                     color: #d3d0d0;
                     transform: scale(0.95);
                 }

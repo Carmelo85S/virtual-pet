@@ -34,8 +34,8 @@ const FoodStore = ({
     },
     {
       id: 3,
-      name: "Cheeseburger",
-      description: "yummy burger for your furry friend!",
+      name: "Burger",
+      description: "yummy cheesy burger!",
       cost: 15,
       img: CheeseBurger,
       onBuy: () => setBurger((prevBurger) => prevBurger + 1),
