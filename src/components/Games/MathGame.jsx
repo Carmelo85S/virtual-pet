@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../style/games/MathGame.css";
+import "../../style/games/mathGame.css";
 import Cat from "../../assets/home-cat.svg";
 import items from "../../assets/form/math-items.js";
 import {
