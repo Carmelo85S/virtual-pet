@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../style/games/QuickQuiz.css";
+import "../../style/games/quickQuiz.css";
 import Cat from "../../assets/home-cat.svg";
 
 const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
@@ -267,7 +267,7 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
             <div className="quiz-game-lives">
               Lives: {lives} / 3 {/* Display remaining life */}
             </div>
-            <div className="quiz-game-lives">
+            <div className="quiz-game-questions">
               Questions: {questions} / 10 {/* Display remaining questions */}
             </div>
           </div>

@@ -37,6 +37,8 @@
       }
 
       p {
+        @include specification;
+        font-size: 40px;
         margin: 4px 0;
         color: #555;
       }

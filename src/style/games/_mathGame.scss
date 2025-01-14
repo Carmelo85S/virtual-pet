@@ -120,6 +120,7 @@
     }
   
     .math-game-feedback {
+      @include specification;
       font-size: 32px;
       margin-top: 15px;
       padding: 10px;

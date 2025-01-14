@@ -19,7 +19,7 @@ const DrinkStore = ({ points, setPoints,
     {
       id: 2,
       name: "Cranberry Juice",
-      description: "A tart, ruby-red thirst quencher that screams 'Fancy!'",
+      description: "A ruby-red thirst quencher that screams 'Fancy!'",
       cost: 20,
       img: Wine,
       onBuy: () => setWine((prevWine) => prevWine + 1),
