@@ -21,7 +21,7 @@ const HowToPlaySecond = () => {
             Lars eat and get more full and hydrated!
           </p>
           <section className="img-container">
-            <img src={Star} alt="Star image used for points" />
+            <img className="star" src={Star} alt="Star image used for points" />
             <img src={FoodAndDrinks} alt="Button items food and drinks" />  
           </section>
         </section>
