@@ -196,6 +196,25 @@
                     width: 250px;
                     margin-left: 0px;
                 }
+
+                .poop-visible {
+                    width: 50px;
+                    position:absolute;
+    
+                    .poopBtn{
+                        width: 50px;
+                        position:relative;
+                        top:-100px;
+                        left: 200px;
+                        background-color: inherit;
+                        border: none;
+                        cursor: pointer;
+    
+                        img{
+                            width: 50px;
+                        }
+                    }
+                }
             }
 
             .overlay-food {
@@ -232,10 +251,22 @@
                         width: 100%;
                       
                       
-                      .color {
-                        height: 100%;
-                        transition: width 0.3s ease-in-out;
-                      }
+                        .color {
+                            height: 100%;
+                            transition: width 0.3s ease-in-out;
+                        }
+                    }
+
+                    .button-food-container{
+                        @include container(430px, 50px);
+                        @include flexbox(space-around, center, row);
+                        margin-bottom: 20px;
+        
+                        .food-btn,
+                        .drink-btn{
+                            @include flexbox(center, center, column);
+                            @include status-button;
+                        }
                     }
                 }
             }

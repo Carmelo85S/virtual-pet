@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../style/games/QuickQuiz.css";
+import "../../style/games/quickQuiz.css";
 import Cat from "../../assets/home-cat.svg";
 
 const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
@@ -201,21 +201,21 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
 
     if (option === correctAnswer) {
       setFeedback("Correct! 🎉");
-      onPointsEarned(10); // Earn points for correct answer
+      onPointsEarned(10); // Earn points for correct answer, passing only earned points
       setQuestions((prevQuestions) => prevQuestions + 1);
 
-      //if questions === 10 game over
+      // if questions === 10 game over
       if (questions + 1 === 10) {
         setIsGameOver(true);
         setFeedback("Well done! You answered all questions!");
       }
-      // Update points globally
+      // Update points globally by passing only earned points
       setPoints((prevPoints) => prevPoints + 10);
       setPlayerPoints((prevPlayerPoints) => prevPlayerPoints + 10);
     } else {
       setFeedback(`Incorrect! The correct answer was ${correctAnswer}. ❌`);
       setLives(lives - 1);
-      //if lives  is zero stop the game
+      // if lives is zero stop the game
       if (lives - 1 === 0) {
         setIsGameOver(true);
         setFeedback("Game Over! ❌");
@@ -233,6 +233,7 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
       setIsAnswerSubmitted(false); // Allow for answer submission again
     }, 1000); // Short delay before resetting for the next question
   };
+
 
   // Effect to manage the countdown timer
   useEffect(() => {
@@ -267,7 +268,7 @@ const QuickQuiz = ({ setPoints, setPlayerPoints }) => {
             <div className="quiz-game-lives">
               Lives: {lives} / 3 {/* Display remaining life */}
             </div>
-            <div className="quiz-game-lives">
+            <div className="quiz-game-questions">
               Questions: {questions} / 10 {/* Display remaining questions */}
             </div>
           </div>

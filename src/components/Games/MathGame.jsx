@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../style/games/MathGame.css";
+import "../../style/games/mathGame.css";
 import Cat from "../../assets/home-cat.svg";
 import items from "../../assets/form/math-items.js";
 import {
@@ -76,19 +76,14 @@ const MathGame = ({ onPointsEarned, points, setPoints }) => {
     if (selected === question.correctAnswer) {
       const earnedPoints = 10; // Points earned
 
-      setScore((prevScore) => prevScore + earnedPoints);
+      setScore((prevScore) => prevScore + earnedPoints); // Update score with earned points
 
-      /*----- Update points after correct answer -----*/
-
+      // Update points after correct answer, only pass earned points to the parent
       setPoints((prevPoints) => {
-        const updatedPoints = prevPoints + earnedPoints;
-
-        /*----- Pass the updated points to the parent component -----*/
-
+        const updatedPoints = prevPoints + earnedPoints; // Update points
         if (onPointsEarned) {
-          onPointsEarned(updatedPoints);
+          onPointsEarned(earnedPoints); // Pass only the earned points, not total points
         }
-
         return updatedPoints;
       });
 
@@ -104,6 +99,7 @@ const MathGame = ({ onPointsEarned, points, setPoints }) => {
       generateQuestion();
     }, 1500);
   };
+
 
   /*----- Resets the game state to initial values and generates a new question.   -----*/
 
@@ -173,7 +169,7 @@ const MathGame = ({ onPointsEarned, points, setPoints }) => {
                 +
                 {Array.from({ length: question.num2 }, (_, index) => (
                   <img
-                    key={`item2-${index}`}
+                    key={`item2-${index}`} 
                     src={question.item2.image}
                     alt={question.item2.name}
                     className="math-game-item-image"

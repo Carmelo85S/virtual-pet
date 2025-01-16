@@ -36,14 +36,14 @@
                 @include container(473px, 150px);
                 @include flexbox(space-around, center, column);
 
-                .btn-signIn,
-                .btn-signUp{
+                .btn-info,
+                .btn-play{
                     @include home-button;
                 }
-                .btn-signIn{
+                .btn-info{
                     background-color: color.$form-btn;
                 }
-                .btn-signUp{
+                .btn-play{
                     background-color: #5EE270;
 
                     &:hover {
