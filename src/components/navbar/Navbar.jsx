@@ -27,8 +27,8 @@ const Navbar = ({ setIsAuthenticated }) => {
         navigate('/play/');
     };
 
-    const handleInfo = () => {
-        navigate('/info')
+    const handleMeetTheTeam = () => {
+        navigate('/meet-the-team')
     }
 
     return (
@@ -46,8 +46,8 @@ const Navbar = ({ setIsAuthenticated }) => {
                     </button>
 
                     <section className={`nav-btn ${isNavOpen ? 'show' : ''}`}>
-                        <button className="btn game-info" onClick={handleInfo}>
-                            Info
+                        <button className="btn meet" onClick={handleMeetTheTeam}>
+                            The team
                         </button>
                         <button className="btn game-center" onClick={handleGameCenter}>
                             Pet Center

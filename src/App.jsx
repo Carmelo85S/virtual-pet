@@ -13,6 +13,7 @@ import ClothStore from './page/Clothes';
 import HowToPlayFirst from './page/HowToPlayFirst';
 import HowToPlaySecond from './page/HowToPlaySecond';
 import HowToPlayThird from './page/HowToPlayThird';
+import TheTeam from './page/TheTeam';
 import JamendoTracks from './components/music/music';
 import './app.css';
 
@@ -43,6 +44,7 @@ const App = () => {
         <Route path="/info" element={ <HowToPlayFirst />} />
         <Route path="/info-game" element={ <HowToPlaySecond />} />
         <Route path="/info-button" element={ <HowToPlayThird />} />
+        <Route path="/meet-the-team" element={ <TheTeam />} />
 
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />}
         />

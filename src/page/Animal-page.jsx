@@ -152,6 +152,11 @@ const handleDress = () => {
   navigate('/play/clothes');
 };
 
+//info page
+const handleInfo = () => {
+  navigate('/info');
+}
+
 const restartGame = () => {
   setHunger(50);
   setThirst(50);
@@ -264,7 +269,8 @@ return (
     <section className="animal-page-btn">
       <button className="btn-game" onClick={handleFood}>Feed</button>
       <button className="btn-game" onClick={handleHydrate}>Hydrate</button>
-      <button className="btn-game" onClick={handleDress}>Dress</button>
+      {/*<button className="btn-game" onClick={handleDress}>Dress</button>*/}
+      <button className="btn-game" onClick={handleInfo}>Info</button>
     </section>
   </section>
   );
