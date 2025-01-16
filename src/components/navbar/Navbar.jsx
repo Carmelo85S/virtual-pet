@@ -3,20 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Star from '../../assets/star.svg';
 import '../../style/navbar/navbar.css';
 
-const Navbar = ({ setIsAuthenticated }) => {
+const Navbar = () => {
     const navigate = useNavigate();
     const [isNavOpen, setIsNavOpen] = useState(false);
 
     const toggleNav = () => {
         setIsNavOpen(!isNavOpen);
-    };
-
-    const handleLogout = () => {
-        const confirmLogout = window.confirm("Are you sure you want to log out?");
-        if (confirmLogout) {
-            setIsAuthenticated(false);
-            navigate('/login');
-        }
     };
 
     const handlePlay = () => {
@@ -54,9 +46,6 @@ const Navbar = ({ setIsAuthenticated }) => {
                         </button>
                         <button className="btn play" onClick={handlePlay}>
                             Play
-                        </button>
-                        <button className="btn logout" onClick={handleLogout}>
-                            Log out
                         </button>
                     </section>
             </nav>

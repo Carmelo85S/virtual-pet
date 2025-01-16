@@ -12,11 +12,11 @@ const Home = () => {
         <section className="cta-container">
           <h2 className="lets-play">Let's Play!</h2>
           <section className="btn-container">
-            <Link className="btn-signIn" to="/login">
-              Login
+            <Link className="btn-info" to="/info">
+              Info
             </Link>
-            <Link className="btn-signUp" to="/register">
-              Register
+            <Link className="btn-play" to="/play">
+              Play
             </Link>
           </section>
         </section>
